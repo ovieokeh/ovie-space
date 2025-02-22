@@ -1,4 +1,4 @@
-import { LuHouse, LuLinkedin } from "react-icons/lu";
+import { LuGithub, LuHouse, LuLinkedin } from "react-icons/lu";
 
 import { ExternalLink } from "@/components/external-link";
 import { InternalLink } from "@/components/internal-link";
@@ -17,6 +17,12 @@ export default function Books() {
             {text.intro.description}
           </h3>
           <InternalLink icon={<LuHouse className="size-5" />} href="/" title="Home" variant="bold" />
+          <ExternalLink
+            icon={<LuGithub className="size-5" />}
+            href="https://github.com/ovieokeh"
+            title="Github"
+            variant="bold"
+          />
           <ExternalLink
             icon={<LuLinkedin className="size-5" />}
             href="https://linkedin.com/in/ovieokeh"
