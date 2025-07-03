@@ -5,7 +5,7 @@ export const homepageContent = {
     id: "hero",
     subheading: "DEVELOPER & DESIGNER | NETHERLANDS",
     heading: "Human, Builder, Serial Hobbyist.",
-    description: "Hi, I'm Ovie. This is my digital workshop—a place to share my work and interests",
+    description: "Hi, I'm Ovie. This is my digital space—a place to share my work and interests",
     buttons: {
       primary: "See My Work",
       secondary: "Get in Touch",
@@ -78,28 +78,25 @@ Here are a few projects where I've experienced this firsthand, from building com
         linkText: "See My Reading List",
         linkUrl: "/reading",
       },
-      // {
-      //   icon: Music,
-      //   title: "Piano",
-      //   text: `I started learning the piano in 2023 and it's been a wonderful (albeit challenging) journey.
+      {
+        icon: Film,
+        title: "Media & Film",
+        text: `I used to watch a lot more movies and TV shows when I was younger, but these days, I probably visit the cinema once every few months.
 
-      //   I appreciate the piano for giving me something to focus on outside of work and how it allows me to reach a state of flow.
-
-      //   My neighbors might not love it as much though!
-      //   `,
-      //   linkText: "Watch My Piano Videos",
-      //   linkUrl: "/piano",
-      // },
-      // {
-      //   icon: Film,
-      //   title: "Media & Film",
-      //   text: `I used to watch a lot more movies and TV shows when I was younger, but these days, I probably visit the cinema once every few months.
-
-      //   I still enjoy a good story though, whether it's a mind-breaking plot twist like in "Incendies" or a painfully sweet story like "Eternal Sunshine of the Spotless Mind".
-      //   `,
-      //   linkText: "See My Media List",
-      //   linkUrl: "/media",
-      // },
+        I still enjoy a good story though, whether it's a mind-breaking plot twist like in "Incendies" or a painfully sweet story like "Eternal Sunshine of the Spotless Mind".
+        `,
+        linkText: "See My Media List",
+        linkUrl: "/media",
+      },
+      {
+        icon: Music,
+        title: "Hobbies & Creations",
+        text: `From tinkering with electronics to playing the piano, I love exploring new hobbies and sharing my creations.
+        I want to share more of my creative side here as a way to keep track of my progress and hopefully inspire myself whenever I feel stuck.
+        `,
+        linkText: "See My Hobbies",
+        linkUrl: "/hobbies",
+      },
     ],
   },
   connect: {

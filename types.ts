@@ -1,3 +1,5 @@
+import { hobbiesData } from "./content/hobbies";
+import { mediaData } from "./content/media";
 import { readingData } from "./content/reading";
 
 export interface LinkPreviewData {
@@ -7,4 +9,8 @@ export interface LinkPreviewData {
   url: string;
 }
 
-export type Book = (typeof readingData.library)[number];
+export type BookItem = (typeof readingData.library)[number];
+
+export type MediaItem = (typeof mediaData.library)[number];
+
+export type VideoItem = (typeof hobbiesData.videos)[number];

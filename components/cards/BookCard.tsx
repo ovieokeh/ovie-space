@@ -1,12 +1,12 @@
 "use client";
 import { cardVariants } from "@/styling/variants";
-import { Book } from "@/types";
+import { BookItem } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Markdown, { Components } from "react-markdown";
 
 interface BookCardProps {
-  book: Book;
+  book: BookItem;
 }
 
 const markdownComponents = {
@@ -54,9 +54,7 @@ export const BookCard = ({ book }: BookCardProps) => {
             </span>
           ))}
         </div>
-        {/* <p className="text-slate-400 leading-relaxed text-sm flex-grow"> */}
         <Markdown components={markdownComponents}>{book.description}</Markdown>
-        {/* </p> */}
       </div>
     </motion.div>
   );

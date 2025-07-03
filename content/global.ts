@@ -1,12 +1,10 @@
-import { homepageContent } from "./homepage";
-
 export const globalContent = {
   nav: {
     name: "Ovie.",
     links: [
-      { name: "About", href: `/#${homepageContent.hero.id}` },
-      { name: "Work", href: `/#${homepageContent.work.id}` },
-      { name: "Interests", href: `/#${homepageContent.interests.id}` },
+      { name: "Reading", href: `/reading` },
+      { name: "Media", href: `/media` },
+      { name: "Hobbies", href: `/hobbies` },
     ],
   },
   footer: {
