@@ -1,0 +1,71 @@
+"use client";
+import { motion } from "framer-motion";
+import { BookCard } from "@/components/cards/BookCard";
+import { readingData } from "@/content/reading";
+import { sectionVariants } from "@/styling/variants";
+
+export default function ReadingPage() {
+  return (
+    <div className="bg-slate-900 text-slate-300 font-sans antialiased">
+      <main className="pt-24 sm:pt-32">
+        {/* --- Page Header --- */}
+        <section className="container mx-auto px-6 pt-24 pb-16 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tighter">
+              {readingData.header.title}
+            </h1>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">{readingData.header.description}</p>
+          </motion.div>
+        </section>
+
+        {/* --- Book Grid --- */}
+        <motion.section
+          id="library"
+          className="container mx-auto px-6 pb-20 md:pb-28"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {readingData.library.map((book) => (
+              <BookCard key={book.title} book={book} />
+            ))}
+          </div>
+        </motion.section>
+
+        {/* --- Publications Section --- */}
+        <section id="publications" className="bg-slate-900/70 py-20">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <motion.div
+              variants={sectionVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold text-white mb-2">{readingData.publications.title}</h2>
+              <p className="text-slate-400 mb-8">{readingData.publications.description}</p>
+              <div className="space-y-4">
+                {readingData.publications.items.map((item, i) => (
+                  <a
+                    key={i}
+                    href={item.href}
+                    className="flex items-center justify-between p-4 bg-slate-800/50 border border-slate-700/50 rounded-lg hover:bg-slate-800 transition-colors duration-300"
+                  >
+                    <span className="text-lg text-slate-200">
+                      {i + 1}. {item.name}
+                    </span>
+                    <span className="text-cyan-400 text-sm">Read Article &rarr;</span>
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+}
