@@ -9,6 +9,6 @@ export const globalContent = {
   },
   footer: {
     copyright: `© ${new Date().getFullYear()} Ovie. All rights reserved.`,
-    location: "Crafted with intention in the Netherlands.",
+    location: "Crafted with 🫶 in the Netherlands.",
   },
 };
