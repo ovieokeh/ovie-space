@@ -3,9 +3,9 @@ import { Linkedin, Github, Music, BookOpen, Film } from "lucide-react";
 export const homepageContent = {
   hero: {
     id: "hero",
-    subheading: "OVIE | DEVELOPER & DESIGNER | NETHERLANDS",
-    heading: "Software Developer + Piano Enthusiast + Obsessive Mind + . . .",
-    description: "Hi, I'm Ovie and welcome to my space. Hopefully, you'll find something here that resonates with you.",
+    subheading: "DEVELOPER & DESIGNER | NETHERLANDS",
+    heading: "Human, Builder, Serial Hobbyist.",
+    description: "Hi, I'm Ovie. This is my digital workshop—a place to share my work and interests",
     buttons: {
       primary: "See My Work",
       secondary: "Get in Touch",
@@ -14,15 +14,15 @@ export const homepageContent = {
   work: {
     id: "work",
     title: "Work & Projects",
-    description: `A bit biased since I'm a developer but I believe technology, when used thoughtfully, can essentially cure most natural human problems.
-    
-    Here's a glimpse into some of my recent projects and explorations.
+    description: `I believe technology, when wielded with intention, is the most powerful tool for solving human challenges.
+
+Here are a few projects where I've experienced this firsthand, from building complex business management systems to exploring new ways of shared human experiences.
     `,
     featured: {
       tag: "Featured Project",
       title: "Kindling",
       description:
-        "A platform for guided, community-driven routines. It's my main exploration into how shared practices can help people grow.",
+        "The primary application of my philosophy. Kindling is a platform for guided, community-driven routines, designed to explore how shared practices can foster personal growth.",
       linkText: "Learn More",
       linkUrl: "https://www.getkindling.app/en",
     },
@@ -54,7 +54,9 @@ export const homepageContent = {
       {
         image: "https://placehold.co/600x400/0f172a/94a3b8?text=Explorations",
         title: "Explorations",
-        description: `As most developers, I have a lot of side projects and experiments that I work on in my spare time, from crude Solana trading bots, to AI meeting transcribing tools, to a personal WhatsApp assistant. You can find some of them on my GitHub profile.`,
+        description: `My curiosity drives me to constantly tinker with new technologies.
+        
+        My GitHub is a public workshop for these experiments, from crude Solana trading bots and AI-powered meeting assistants to personal automation tools.`,
         linkText: "See My GitHub",
         linkUrl: "https://github.com/ovieokeh",
       },
@@ -104,7 +106,7 @@ export const homepageContent = {
     id: "connect",
     title: "Let's Connect",
     description:
-      "I'm always open to talking with other builders, thinkers, and potential collaborators. If my work or interests resonates with you, feel free to reach out.",
+      "I'm always open to talking with other builders, tinkerers, and potential collaborators. If my work or interests resonates with you, feel free to reach out.",
     button: "Say Hello",
     buttonUrl: "mailto:kevinokeh@gmail.com",
     socials: [

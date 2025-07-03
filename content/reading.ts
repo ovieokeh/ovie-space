@@ -169,8 +169,8 @@ Purchase the book:
     title: "Paid Publications",
     description: "These are all technical articles that I published through third parties.",
     items: [
-      { name: "LogRocket Blog & Ovie Okeh", href: "#" },
-      { name: "OpenReplay Blog & Ovie Okeh", href: "#" },
+      { name: "LogRocket Blog & Ovie Okeh", href: "https://blog.logrocket.com/author/ovieokeh/" },
+      { name: "OpenReplay Blog & Ovie Okeh", href: "https://blog.openreplay.com/authors/ovie-okeh/" },
     ],
   },
 };
