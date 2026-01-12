@@ -10,12 +10,12 @@ interface MediaCardProps {
 }
 
 export const MediaCard = ({ media }: MediaCardProps) => {
-  const statusColor = "bg-blue-400/10 text-blue-300";
+  const statusColor = "bg-blue-400/10 text-blue-600 dark:text-blue-300";
 
   return (
     <motion.div
       variants={cardVariants}
-      className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700/50 flex flex-col"
+      className="bg-secondary rounded-lg overflow-hidden border border-border flex flex-col"
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
       <Image
@@ -29,17 +29,20 @@ export const MediaCard = ({ media }: MediaCardProps) => {
         }}
       />
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-white mb-1">{media.title}</h3>
-        <p className="text-slate-400 mb-4 text-sm font-medium">{media.type}</p>
+        <h3 className="text-xl font-bold text-foreground mb-1">{media.title}</h3>
+        <p className="text-muted-foreground mb-4 text-sm font-medium">{media.type}</p>
         <div className="flex items-center flex-wrap gap-2 mb-4">
           <span className={`text-xs font-medium px-2 py-1 rounded-full ${statusColor}`}>{media.status}</span>
           {media.tags.map((tag) => (
-            <span key={tag} className="text-xs font-medium px-2 py-1 rounded-full bg-slate-700 text-slate-300">
+            <span
+              key={tag}
+              className="text-xs font-medium px-2 py-1 rounded-full bg-secondary border border-border text-muted-foreground"
+            >
               {tag}
             </span>
           ))}
         </div>
-        <p className="text-slate-400 leading-relaxed text-sm flex-grow">{media.description}</p>
+        <p className="text-muted-foreground leading-relaxed text-sm flex-grow">{media.description}</p>
       </div>
     </motion.div>
   );

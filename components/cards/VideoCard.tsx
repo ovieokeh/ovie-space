@@ -15,7 +15,7 @@ export const VideoCard = ({ video }: VideoCardProps) => {
         href={video.videoUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block bg-slate-800 rounded-lg overflow-hidden mb-4 relative"
+        className="block bg-secondary rounded-lg overflow-hidden mb-4 relative"
       >
         <Image
           src={video.thumbnailUrl}
@@ -32,17 +32,17 @@ export const VideoCard = ({ video }: VideoCardProps) => {
         </div>
       </a>
       <div>
-        <h3 className="text-lg font-semibold text-white mb-2 leading-tight group-hover:text-cyan-400 transition-colors duration-300">
+        <h3 className="text-lg font-semibold text-foreground mb-2 leading-tight group-hover:opacity-80 transition-opacity duration-300">
           <a href={video.videoUrl} target="_blank" rel="noopener noreferrer">
             {video.title}
           </a>
         </h3>
-        <p className="text-slate-400 text-sm mb-3 leading-relaxed">{video.description}</p>
+        <p className="text-muted-foreground text-sm mb-3 leading-relaxed">{video.description}</p>
         <div className="flex flex-wrap gap-2">
           {video.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs font-medium px-2 py-1 rounded-full bg-slate-700 text-slate-300 capitalize"
+              className="text-xs font-medium px-2 py-1 rounded-full bg-secondary border border-border text-muted-foreground capitalize"
             >
               {tag}
             </span>

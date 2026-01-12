@@ -10,12 +10,12 @@ interface BookCardProps {
 }
 
 const markdownComponents = {
-  p: ({ ...props }) => <p {...props} className="text-slate-200 leading-relaxed text-sm my-2" />,
+  p: ({ ...props }) => <p {...props} className="text-foreground leading-relaxed text-sm my-2" />,
   a: ({ href, children, ...props }) => (
     <a
       href={href}
       {...props}
-      className="text-cyan-300 hover:text-cyan-600 transition-colors duration-200"
+      className="text-foreground/80 hover:text-foreground underline transition-colors duration-200"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -25,12 +25,15 @@ const markdownComponents = {
 } satisfies Components;
 
 export const BookCard = ({ book }: BookCardProps) => {
-  const statusColor = book.status === "Reading" ? "bg-yellow-400/10 text-yellow-300" : "bg-green-400/10 text-green-300";
+  const statusColor =
+    book.status === "Reading"
+      ? "bg-yellow-800 text-yellow-200 dark:bg-yellow-400/10 dark:text-yellow-300"
+      : "bg-green-800 text-green-200 dark:bg-green-400/10 dark:text-green-300";
 
   return (
     <motion.div
       variants={cardVariants}
-      className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700/50 flex flex-col"
+      className="bg-secondary rounded-lg overflow-hidden border border-border flex flex-col"
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
       <Image
@@ -44,12 +47,15 @@ export const BookCard = ({ book }: BookCardProps) => {
         }}
       />
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-white mb-1">{book.title}</h3>
-        <p className="text-slate-400 mb-4 text-sm">{book.author}</p>
+        <h3 className="text-xl font-bold text-foreground mb-1">{book.title}</h3>
+        <p className="text-muted-foreground mb-4 text-sm">{book.author}</p>
         <div className="flex items-center gap-2 mb-4">
           <span className={`text-xs font-medium px-2 py-1 rounded-full ${statusColor}`}>{book.status}</span>
           {book.tags.map((tag) => (
-            <span key={tag} className="text-xs font-medium px-2 py-1 rounded-full bg-slate-700 text-slate-300">
+            <span
+              key={tag}
+              className="text-xs font-medium px-2 py-1 rounded-full bg-secondary border border-border text-muted-foreground"
+            >
               {tag}
             </span>
           ))}

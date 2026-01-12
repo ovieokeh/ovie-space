@@ -6,7 +6,7 @@ import { sectionVariants } from "@/styling/variants";
 
 export default function MediaPage() {
   return (
-    <div className="bg-slate-900 text-slate-300 font-sans antialiased">
+    <div className="bg-background text-foreground font-sans antialiased min-h-screen">
       <main>
         <section className="container mx-auto px-6 pt-24 pb-16 text-center">
           <motion.div
@@ -14,10 +14,10 @@ export default function MediaPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tighter">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tighter">
               {mediaData.header.title}
             </h1>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">{mediaData.header.description}</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{mediaData.header.description}</p>
           </motion.div>
         </section>
 
