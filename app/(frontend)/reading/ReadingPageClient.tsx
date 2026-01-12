@@ -1,10 +1,31 @@
 "use client";
 import { motion } from "framer-motion";
 import { BookCard } from "@/components/cards/BookCard";
-import { readingData } from "@/content/reading";
 import { sectionVariants } from "@/styling/variants";
 
-export default function ReadingPage() {
+interface Book {
+  title: string;
+  author: string;
+  status: string;
+  tags: string[];
+  description: string;
+  imageUrl: string;
+}
+
+interface ReadingPageClientProps {
+  books: Book[];
+  header: {
+    title: string;
+    description: string;
+  };
+  publications: {
+    title: string;
+    description: string;
+    items: { name: string; href: string }[];
+  };
+}
+
+export function ReadingPageClient({ books, header, publications }: ReadingPageClientProps) {
   return (
     <div className="bg-background text-foreground font-sans antialiased min-h-screen">
       <main className="sm:pt-32">
@@ -16,9 +37,9 @@ export default function ReadingPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tighter">
-              {readingData.header.title}
+              {header.title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{readingData.header.description}</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{header.description}</p>
           </motion.div>
         </section>
 
@@ -31,7 +52,7 @@ export default function ReadingPage() {
           animate="visible"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {readingData.library.map((book) => (
+            {books.map((book) => (
               <BookCard key={book.title} book={book} />
             ))}
           </div>
@@ -46,10 +67,10 @@ export default function ReadingPage() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.5 }}
             >
-              <h2 className="text-3xl font-bold text-foreground mb-2">{readingData.publications.title}</h2>
-              <p className="text-muted-foreground mb-8">{readingData.publications.description}</p>
+              <h2 className="text-3xl font-bold text-foreground mb-2">{publications.title}</h2>
+              <p className="text-muted-foreground mb-8">{publications.description}</p>
               <div className="space-y-4">
-                {readingData.publications.items.map((item, i) => (
+                {publications.items.map((item, i) => (
                   <a
                     key={i}
                     href={item.href}

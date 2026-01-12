@@ -9,7 +9,6 @@ import { cardVariants, sectionVariants } from "@/styling/variants";
 import { LinkPreviewImage } from "@/components/previews/LinkPreview";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { cn } from "@/lib/utils";
 
 interface SocialLinkProps {
   href: string;

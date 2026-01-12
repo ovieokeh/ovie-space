@@ -1,11 +1,25 @@
 "use client";
-import React from "react";
 import { motion } from "framer-motion";
-import { hobbiesData } from "@/content/hobbies";
 import { VideoCard } from "@/components/cards/VideoCard";
 import { sectionVariants } from "@/styling/variants";
 
-export default function HobbiesPage() {
+interface VideoItem {
+  title: string;
+  description: string;
+  tags: string[];
+  thumbnailUrl: string;
+  videoUrl: string;
+}
+
+interface HobbiesPageClientProps {
+  videos: VideoItem[];
+  header: {
+    title: string;
+    description: string;
+  };
+}
+
+export function HobbiesPageClient({ videos, header }: HobbiesPageClientProps) {
   return (
     <div className="bg-background text-foreground font-sans antialiased min-h-screen">
       <main>
@@ -16,9 +30,9 @@ export default function HobbiesPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tighter">
-              {hobbiesData.header.title}
+              {header.title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{hobbiesData.header.description}</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{header.description}</p>
           </motion.div>
         </section>
 
@@ -30,7 +44,7 @@ export default function HobbiesPage() {
           animate="visible"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {hobbiesData.videos.map((video) => (
+            {videos.map((video) => (
               <VideoCard key={video.title} video={video} />
             ))}
           </div>

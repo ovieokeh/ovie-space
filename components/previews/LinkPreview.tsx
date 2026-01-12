@@ -28,7 +28,6 @@ export function LinkPreviewImage({
         const res = await fetch(`/api/link-preview?url=${encodeURIComponent(url)}`);
         if (!res.ok) throw new Error(`status ${res.status}`);
         const json: LinkPreviewData = await res.json();
-        console.log("LinkPreview fetch result:", json);
         if (!cancelled) setData(json);
       } catch (err) {
         console.error("LinkPreview fetch failed:", err);

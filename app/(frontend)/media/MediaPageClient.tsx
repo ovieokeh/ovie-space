@@ -1,10 +1,26 @@
 "use client";
 import { motion } from "framer-motion";
 import { MediaCard } from "@/components/cards/MediaCard";
-import { mediaData } from "@/content/media";
 import { sectionVariants } from "@/styling/variants";
 
-export default function MediaPage() {
+interface MediaItem {
+  title: string;
+  type: string;
+  status: string;
+  tags: string[];
+  description: string;
+  imageUrl: string;
+}
+
+interface MediaPageClientProps {
+  media: MediaItem[];
+  header: {
+    title: string;
+    description: string;
+  };
+}
+
+export function MediaPageClient({ media, header }: MediaPageClientProps) {
   return (
     <div className="bg-background text-foreground font-sans antialiased min-h-screen">
       <main>
@@ -15,9 +31,9 @@ export default function MediaPage() {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tighter">
-              {mediaData.header.title}
+              {header.title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{mediaData.header.description}</p>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{header.description}</p>
           </motion.div>
         </section>
 
@@ -29,8 +45,8 @@ export default function MediaPage() {
           animate="visible"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mediaData.library.map((media) => (
-              <MediaCard key={media.title} media={media} />
+            {media.map((item) => (
+              <MediaCard key={item.title} media={item} />
             ))}
           </div>
         </motion.section>
