@@ -104,3 +104,57 @@ export async function getProjects() {
     })),
   };
 }
+
+export async function getPosts() {
+  const payload = await getPayload({ config });
+  const { docs } = await payload.find({
+    collection: "posts",
+    limit: 100,
+    sort: "-publishedAt",
+    where: {
+      status: {
+        equals: "published",
+      },
+    },
+  });
+
+  return docs.map((post) => ({
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    excerpt: post.excerpt || "",
+    publishedAt: post.publishedAt,
+    lastUpdatedAt: post.lastUpdatedAt,
+    coverImage: post.coverImage,
+  }));
+}
+
+export async function getPost(slug: string) {
+  const payload = await getPayload({ config });
+  const { docs } = await payload.find({
+    collection: "posts",
+    limit: 1,
+    where: {
+      slug: {
+        equals: slug,
+      },
+      status: {
+        equals: "published",
+      },
+    },
+  });
+
+  if (docs.length === 0) return null;
+
+  const post = docs[0];
+  return {
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    excerpt: post.excerpt || "",
+    content: post.content,
+    publishedAt: post.publishedAt,
+    lastUpdatedAt: post.lastUpdatedAt,
+    coverImage: post.coverImage,
+  };
+}

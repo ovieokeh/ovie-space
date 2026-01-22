@@ -2,6 +2,7 @@ export const globalContent = {
   nav: {
     name: "Ovie.",
     links: [
+      { name: "Blog", href: `/blog` },
       { name: "Reading", href: `/reading` },
       { name: "Media", href: `/media` },
       { name: "Hobbies", href: `/hobbies` },

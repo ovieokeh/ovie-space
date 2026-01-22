@@ -4,3 +4,4 @@ export { Media } from "./Media";
 export { Videos } from "./Videos";
 export { Projects } from "./Projects";
 export { Uploads } from "./Uploads";
+export { Posts } from "./Posts";

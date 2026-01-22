@@ -73,6 +73,7 @@ export interface Config {
     videos: Video;
     projects: Project;
     uploads: Upload;
+    posts: Post;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     videos: VideosSelect<false> | VideosSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     uploads: UploadsSelect<false> | UploadsSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -325,6 +327,52 @@ export interface Upload {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  /**
+   * URL-friendly identifier (e.g., 'my-first-post')
+   */
+  slug: string;
+  /**
+   * Brief summary for previews and SEO
+   */
+  excerpt?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Optional cover image for the post
+   */
+  coverImage?: (number | null) | Upload;
+  status: 'draft' | 'published';
+  /**
+   * When this post was first published
+   */
+  publishedAt?: string | null;
+  /**
+   * When this post was last updated
+   */
+  lastUpdatedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -370,6 +418,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'uploads';
         value: number | Upload;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -524,6 +576,22 @@ export interface UploadsSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  content?: T;
+  coverImage?: T;
+  status?: T;
+  publishedAt?: T;
+  lastUpdatedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

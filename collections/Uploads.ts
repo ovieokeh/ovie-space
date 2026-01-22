@@ -5,7 +5,10 @@ export const Uploads: CollectionConfig = {
   admin: {
     useAsTitle: "filename",
   },
-  upload: true,
+  upload: {
+    staticDir: "public/uploads",
+    mimeTypes: ["image/*"],
+  },
   fields: [
     {
       name: "alt",
