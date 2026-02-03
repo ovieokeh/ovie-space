@@ -23,22 +23,7 @@ async function seed() {
           author: book.author,
           status: book.status as "Reading" | "Finished" | "Want to Read",
           tags: book.tags.map((tag) => ({ tag })),
-          description: {
-            root: {
-              type: "root",
-              children: [
-                {
-                  type: "paragraph",
-                  children: [{ type: "text", text: book.description }],
-                  version: 1,
-                },
-              ],
-              direction: "ltr",
-              format: "",
-              indent: 0,
-              version: 1,
-            },
-          },
+          description: book.description,
           imageUrl: book.imageUrl,
         },
       });
@@ -59,22 +44,7 @@ async function seed() {
           type: item.type as "Movie" | "Show",
           status: item.status as "Watched" | "Watching" | "Want to Watch",
           tags: item.tags.map((tag) => ({ tag })),
-          description: {
-            root: {
-              type: "root",
-              children: [
-                {
-                  type: "paragraph",
-                  children: [{ type: "text", text: item.description }],
-                  version: 1,
-                },
-              ],
-              direction: "ltr",
-              format: "",
-              indent: 0,
-              version: 1,
-            },
-          },
+          description: item.description,
           imageUrl: item.imageUrl,
         },
       });

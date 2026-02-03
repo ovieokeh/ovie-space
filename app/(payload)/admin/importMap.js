@@ -1,4 +1,5 @@
 import { ISBNField as ISBNField_d4f435ffadbcc5bae8ce5c897ed4e7eb } from '@/components/admin/ISBNField'
+import { MediaLookupField as MediaLookupField_acc1e878a634800baf313f79b42c7c66 } from '@/components/admin/MediaLookupField'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -26,6 +27,7 @@ import { CollectionCards as CollectionCards_ab83ff7e88da8d3530831f296ec4756a } f
 
 export const importMap = {
   "@/components/admin/ISBNField#ISBNField": ISBNField_d4f435ffadbcc5bae8ce5c897ed4e7eb,
+  "@/components/admin/MediaLookupField#MediaLookupField": MediaLookupField_acc1e878a634800baf313f79b42c7c66,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,

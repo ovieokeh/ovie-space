@@ -3,26 +3,12 @@ import { cardVariants } from "@/styling/variants";
 import { BookItem } from "@/types";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Markdown, { Components } from "react-markdown";
+import Markdown from "react-markdown";
+import { markdownComponents } from "./shared";
 
 interface BookCardProps {
   book: BookItem;
 }
-
-const markdownComponents = {
-  p: ({ ...props }) => <p {...props} className="text-foreground leading-relaxed text-sm my-2" />,
-  a: ({ href, children, ...props }) => (
-    <a
-      href={href}
-      {...props}
-      className="text-foreground/80 hover:text-foreground underline transition-colors duration-200"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      {children}
-    </a>
-  ),
-} satisfies Components;
 
 export const BookCard = ({ book }: BookCardProps) => {
   const statusColor =

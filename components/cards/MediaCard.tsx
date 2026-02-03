@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 
 import { cardVariants } from "@/styling/variants";
 import { MediaItem } from "@/types";
+import Markdown from "react-markdown";
+import { markdownComponents } from "./shared";
 
 interface MediaCardProps {
   media: MediaItem;
@@ -43,6 +45,12 @@ export const MediaCard = ({ media }: MediaCardProps) => {
           ))}
         </div>
         <p className="text-muted-foreground leading-relaxed text-sm flex-grow">{media.description}</p>
+        {media.personalReview && (
+          <div className="mt-4 pt-4 border-t border-border">
+            <h4 className="text-sm font-semibold text-foreground mb-2">Personal Review</h4>
+            <Markdown components={markdownComponents}>{media.personalReview}</Markdown>
+          </div>
+        )}
       </div>
     </motion.div>
   );

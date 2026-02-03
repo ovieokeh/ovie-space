@@ -36,7 +36,7 @@ export async function getBooks() {
     author: book.author,
     status: book.status,
     tags: extractTags(book.tags),
-    description: extractTextFromRichText(book.description),
+    description: book.description || "",
     imageUrl: book.imageUrl ? decodeURIComponent(book.imageUrl) : "",
     personalReview: (book as any).personalReview || "",
     updatedAt: book.updatedAt,
@@ -57,10 +57,11 @@ export async function getMedia() {
     type: item.type,
     status: item.status,
     tags: extractTags(item.tags),
-    description: extractTextFromRichText(item.description),
+    description: item.description || "",
     imageUrl: item.imageUrl ? decodeURIComponent(item.imageUrl) : "",
     updatedAt: item.updatedAt,
     createdAt: item.createdAt,
+    personalReview: item.personalReview,
     publishedAt: item.publishedAt || null,
   }));
 }

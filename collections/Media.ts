@@ -9,6 +9,16 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
+      name: "tmdbLookup",
+      type: "text",
+      admin: {
+        description: "Search for a movie or TV show to autopopulate details",
+        components: {
+          Field: "@/components/admin/MediaLookupField#MediaLookupField",
+        },
+      },
+    },
+    {
       name: "title",
       type: "text",
       required: true,
@@ -33,6 +43,25 @@ export const Media: CollectionConfig = {
       ],
       defaultValue: "Want to Watch",
     },
+
+    {
+      name: "description",
+      type: "textarea",
+    },
+    {
+      name: "imageUrl",
+      type: "text",
+      admin: {
+        description: "URL to the movie/show poster",
+      },
+    },
+    {
+      name: "personalReview",
+      type: "textarea",
+      admin: {
+        description: "Your personal thoughts and review of the movie/show",
+      },
+    },
     {
       name: "tags",
       type: "array",
@@ -42,17 +71,6 @@ export const Media: CollectionConfig = {
           type: "text",
         },
       ],
-    },
-    {
-      name: "description",
-      type: "richText",
-    },
-    {
-      name: "imageUrl",
-      type: "text",
-      admin: {
-        description: "URL to the movie/show poster",
-      },
     },
     ...timestamps,
   ],

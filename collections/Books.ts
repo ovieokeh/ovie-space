@@ -39,19 +39,10 @@ export const Books: CollectionConfig = {
       ],
       defaultValue: "Want to Read",
     },
-    {
-      name: "tags",
-      type: "array",
-      fields: [
-        {
-          name: "tag",
-          type: "text",
-        },
-      ],
-    },
+
     {
       name: "description",
-      type: "richText",
+      type: "textarea",
     },
     {
       name: "imageUrl",
@@ -66,6 +57,16 @@ export const Books: CollectionConfig = {
       admin: {
         description: "Your personal thoughts and review of the book",
       },
+    },
+    {
+      name: "tags",
+      type: "array",
+      fields: [
+        {
+          name: "tag",
+          type: "text",
+        },
+      ],
     },
     ...timestamps,
   ],

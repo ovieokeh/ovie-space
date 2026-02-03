@@ -164,27 +164,7 @@ export interface Book {
   title: string;
   author: string;
   status: 'Reading' | 'Finished' | 'Want to Read';
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  description?: string | null;
   /**
    * URL to the book cover image
    */
@@ -193,6 +173,12 @@ export interface Book {
    * Your personal thoughts and review of the book
    */
   personalReview?: string | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * When this item was published/completed
    */
@@ -206,34 +192,28 @@ export interface Book {
  */
 export interface Media {
   id: number;
+  /**
+   * Search for a movie or TV show to autopopulate details
+   */
+  tmdbLookup?: string | null;
   title: string;
   type: 'Movie' | 'Show';
   status: 'Watched' | 'Watching' | 'Want to Watch';
+  description?: string | null;
+  /**
+   * URL to the movie/show poster
+   */
+  imageUrl?: string | null;
+  /**
+   * Your personal thoughts and review of the movie/show
+   */
+  personalReview?: string | null;
   tags?:
     | {
         tag?: string | null;
         id?: string | null;
       }[]
     | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * URL to the movie/show poster
-   */
-  imageUrl?: string | null;
   /**
    * When this item was published/completed
    */
@@ -263,12 +243,6 @@ export interface Video {
     };
     [k: string]: unknown;
   } | null;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   /**
    * URL to the video thumbnail
    */
@@ -277,6 +251,12 @@ export interface Video {
    * YouTube or other video URL
    */
   videoUrl: string;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * When this item was published/completed
    */
@@ -521,15 +501,15 @@ export interface BooksSelect<T extends boolean = true> {
   title?: T;
   author?: T;
   status?: T;
+  description?: T;
+  imageUrl?: T;
+  personalReview?: T;
   tags?:
     | T
     | {
         tag?: T;
         id?: T;
       };
-  description?: T;
-  imageUrl?: T;
-  personalReview?: T;
   publishedAt?: T;
   createdAt?: T;
   updatedAt?: T;
@@ -539,17 +519,19 @@ export interface BooksSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  tmdbLookup?: T;
   title?: T;
   type?: T;
   status?: T;
+  description?: T;
+  imageUrl?: T;
+  personalReview?: T;
   tags?:
     | T
     | {
         tag?: T;
         id?: T;
       };
-  description?: T;
-  imageUrl?: T;
   publishedAt?: T;
   createdAt?: T;
   updatedAt?: T;
@@ -561,14 +543,14 @@ export interface MediaSelect<T extends boolean = true> {
 export interface VideosSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  thumbnailUrl?: T;
+  videoUrl?: T;
   tags?:
     | T
     | {
         tag?: T;
         id?: T;
       };
-  thumbnailUrl?: T;
-  videoUrl?: T;
   publishedAt?: T;
   createdAt?: T;
   updatedAt?: T;

@@ -21,16 +21,7 @@ export const Videos: CollectionConfig = {
       name: "description",
       type: "richText",
     },
-    {
-      name: "tags",
-      type: "array",
-      fields: [
-        {
-          name: "tag",
-          type: "text",
-        },
-      ],
-    },
+
     {
       name: "thumbnailUrl",
       type: "text",
@@ -45,6 +36,16 @@ export const Videos: CollectionConfig = {
       admin: {
         description: "YouTube or other video URL",
       },
+    },
+    {
+      name: "tags",
+      type: "array",
+      fields: [
+        {
+          name: "tag",
+          type: "text",
+        },
+      ],
     },
     ...timestamps,
   ],

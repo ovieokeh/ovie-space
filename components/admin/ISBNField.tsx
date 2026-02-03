@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import { TextInput, useField, useFormFields, FieldLabel } from "@payloadcms/ui";
+import { useField, useFormFields, FieldLabel } from "@payloadcms/ui";
 import type { TextFieldClientComponent } from "payload";
 import type { BookLookupResponse } from "@/app/api/books/lookup/route";
 
@@ -15,7 +15,7 @@ export const ISBNField: TextFieldClientComponent = (props) => {
   const [success, setSuccess] = useState<string | null>(null);
 
   // Get dispatch functions for other fields
-  const dispatchFields = useFormFields(([fields, dispatch]) => dispatch);
+  const dispatchFields = useFormFields(([_fields, dispatch]) => dispatch);
 
   const handleBlur = useCallback(async () => {
     // Don't fetch if no ISBN or if it's too short
@@ -40,51 +40,19 @@ export const ISBNField: TextFieldClientComponent = (props) => {
 
       // Update form fields using dispatch
       if (title) {
-        dispatchFields({
-          type: "UPDATE",
-          path: "title",
-          value: title,
-        });
+        dispatchFields({ type: "UPDATE", path: "title", value: title });
       }
 
       if (author) {
-        dispatchFields({
-          type: "UPDATE",
-          path: "author",
-          value: author,
-        });
+        dispatchFields({ type: "UPDATE", path: "author", value: author });
       }
 
       if (imageUrl) {
-        dispatchFields({
-          type: "UPDATE",
-          path: "imageUrl",
-          value: imageUrl,
-        });
+        dispatchFields({ type: "UPDATE", path: "imageUrl", value: imageUrl });
       }
 
       if (description) {
-        // Create a Lexical rich text structure for the description
-        dispatchFields({
-          type: "UPDATE",
-          path: "description",
-          value: {
-            root: {
-              type: "root",
-              children: [
-                {
-                  type: "paragraph",
-                  children: [{ type: "text", text: description }],
-                  version: 1,
-                },
-              ],
-              direction: "ltr",
-              format: "",
-              indent: 0,
-              version: 1,
-            },
-          },
-        });
+        dispatchFields({ type: "UPDATE", path: "description", value: description });
       }
 
       setSuccess(`Found: "${title}" by ${author || "Unknown"}`);
