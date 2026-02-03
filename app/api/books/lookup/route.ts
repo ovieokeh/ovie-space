@@ -1,6 +1,14 @@
 import type { NextRequest } from "next/server";
 import axios from "axios";
 
+export interface BookSearchResult {
+  title: string;
+  author: string;
+  year?: number;
+  isbn?: string;
+  coverId?: number;
+}
+
 export interface BookLookupResponse {
   success: boolean;
   data?: {
@@ -9,17 +17,55 @@ export interface BookLookupResponse {
     description: string;
     imageUrl: string;
   };
+  results?: BookSearchResult[];
   error?: string;
 }
 
 export async function GET(req: NextRequest): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const isbn = searchParams.get("isbn");
+  const query = searchParams.get("query");
 
+  // --- Case 1: Search by Name/Author ---
+  if (query) {
+    console.log("[book-lookup] Searching for:", query);
+    try {
+      const response = await axios.get(`https://openlibrary.org/search.json`, {
+        params: {
+          q: query,
+          limit: 10,
+          fields: "title,author_name,first_publish_year,isbn,cover_i",
+        },
+      });
+
+      const docs = response.data.docs || [];
+      const results: BookSearchResult[] = docs.map((doc: any) => ({
+        title: doc.title,
+        author: doc.author_name ? doc.author_name.join(", ") : "Unknown",
+        year: doc.first_publish_year,
+        // Prefer explicit ISBNs, take the first one
+        isbn: doc.isbn ? doc.isbn[0] : undefined,
+        coverId: doc.cover_i,
+      }));
+
+      return Response.json({
+        success: true,
+        results,
+      } satisfies BookLookupResponse);
+    } catch (error) {
+      console.error("[book-lookup] Search failed:", error);
+      return Response.json({ success: false, error: "Search failed" } satisfies BookLookupResponse, { status: 500 });
+    }
+  }
+
+  // --- Case 2: Lookup by ISBN ---
   if (!isbn) {
-    return Response.json({ success: false, error: 'Missing "isbn" query param' } satisfies BookLookupResponse, {
-      status: 400,
-    });
+    return Response.json(
+      { success: false, error: 'Missing "isbn" or "query" query param' } satisfies BookLookupResponse,
+      {
+        status: 400,
+      },
+    );
   }
 
   // Clean up ISBN - remove dashes and spaces
