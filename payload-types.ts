@@ -193,8 +193,12 @@ export interface Book {
    * Your personal thoughts and review of the book
    */
   personalReview?: string | null;
-  updatedAt: string;
+  /**
+   * When this item was published/completed
+   */
+  publishedAt?: string | null;
   createdAt: string;
+  updatedAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -230,8 +234,12 @@ export interface Media {
    * URL to the movie/show poster
    */
   imageUrl?: string | null;
-  updatedAt: string;
+  /**
+   * When this item was published/completed
+   */
+  publishedAt?: string | null;
   createdAt: string;
+  updatedAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -269,8 +277,12 @@ export interface Video {
    * YouTube or other video URL
    */
   videoUrl: string;
-  updatedAt: string;
+  /**
+   * When this item was published/completed
+   */
+  publishedAt?: string | null;
   createdAt: string;
+  updatedAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -308,8 +320,12 @@ export interface Project {
    * Display order (lower numbers appear first)
    */
   order?: number | null;
-  updatedAt: string;
+  /**
+   * When this item was published/completed
+   */
+  publishedAt?: string | null;
   createdAt: string;
+  updatedAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -376,8 +392,8 @@ export interface Post {
    * When this post was last updated
    */
   lastUpdatedAt?: string | null;
-  updatedAt: string;
   createdAt: string;
+  updatedAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -514,8 +530,9 @@ export interface BooksSelect<T extends boolean = true> {
   description?: T;
   imageUrl?: T;
   personalReview?: T;
-  updatedAt?: T;
+  publishedAt?: T;
   createdAt?: T;
+  updatedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -533,8 +550,9 @@ export interface MediaSelect<T extends boolean = true> {
       };
   description?: T;
   imageUrl?: T;
-  updatedAt?: T;
+  publishedAt?: T;
   createdAt?: T;
+  updatedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -551,8 +569,9 @@ export interface VideosSelect<T extends boolean = true> {
       };
   thumbnailUrl?: T;
   videoUrl?: T;
-  updatedAt?: T;
+  publishedAt?: T;
   createdAt?: T;
+  updatedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -566,8 +585,9 @@ export interface ProjectsSelect<T extends boolean = true> {
   linkUrl?: T;
   isFeatured?: T;
   order?: T;
-  updatedAt?: T;
+  publishedAt?: T;
   createdAt?: T;
+  updatedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -600,8 +620,8 @@ export interface PostsSelect<T extends boolean = true> {
   status?: T;
   publishedAt?: T;
   lastUpdatedAt?: T;
-  updatedAt?: T;
   createdAt?: T;
+  updatedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

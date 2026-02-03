@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { timestamps } from "./shared/timestamps";
 
 export const Projects: CollectionConfig = {
   slug: "projects",
@@ -48,5 +49,6 @@ export const Projects: CollectionConfig = {
         description: "Display order (lower numbers appear first)",
       },
     },
+    ...timestamps,
   ],
 };

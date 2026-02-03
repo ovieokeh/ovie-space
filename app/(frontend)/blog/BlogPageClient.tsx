@@ -6,19 +6,10 @@ import Link from "next/link";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { cardVariants, sectionVariants } from "@/styling/variants";
-
-interface Post {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  publishedAt: string | null;
-  lastUpdatedAt: string | null;
-  coverImage: unknown;
-}
+import { PostItem } from "@/types";
 
 interface BlogPageClientProps {
-  posts: Post[];
+  posts: PostItem[];
   header: {
     title: string;
     description: string;
@@ -37,11 +28,7 @@ function formatDate(dateString: string | null): string {
 export function BlogPageClient({ posts, header }: BlogPageClientProps) {
   return (
     <PageLayout title={header.title} description={header.description} maxWidth="default">
-      <motion.section
-        variants={sectionVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.section variants={sectionVariants} initial="hidden" animate="visible">
         {posts.length === 0 ? (
           <GlassCard className="text-center py-16">
             <p className="text-muted-foreground text-lg">No posts yet. Check back soon!</p>

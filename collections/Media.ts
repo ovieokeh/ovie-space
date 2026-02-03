@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { timestamps } from "./shared/timestamps";
 
 export const Media: CollectionConfig = {
   slug: "media",
@@ -53,5 +54,6 @@ export const Media: CollectionConfig = {
         description: "URL to the movie/show poster",
       },
     },
+    ...timestamps,
   ],
 };

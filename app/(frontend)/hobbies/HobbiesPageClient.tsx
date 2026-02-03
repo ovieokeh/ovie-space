@@ -17,7 +17,7 @@ interface HobbiesPageClientProps {
 export function HobbiesPageClient({ videos, header }: HobbiesPageClientProps) {
   const timelineItems = videos.map((video) => ({
     id: video.title,
-    date: new Date(video.updatedAt),
+    date: new Date(video.publishedAt ?? video.createdAt),
     content: <VideoCard video={video} />,
   }));
 

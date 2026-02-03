@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { timestamps } from "./shared/timestamps";
 
 // Helper function to generate URL-friendly slug
 function generateSlug(text: string): string {
@@ -92,5 +93,6 @@ export const Posts: CollectionConfig = {
         },
       },
     },
+    ...timestamps.filter((field) => field.custom?.key !== "publishedAt"),
   ],
 };

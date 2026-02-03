@@ -6,20 +6,10 @@ import Link from "next/link";
 import { RichText } from "@/components/core/RichText";
 import { GlassCard } from "@/components/ui/GlassCard";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
-
-interface Post {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: SerializedEditorState | null;
-  publishedAt: string | null;
-  lastUpdatedAt: string | null;
-  coverImage: unknown;
-}
+import { PostItem } from "@/types";
 
 interface PostPageClientProps {
-  post: Post;
+  post: PostItem;
 }
 
 function formatDate(dateString: string | null): string {

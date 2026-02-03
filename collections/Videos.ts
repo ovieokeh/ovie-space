@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { timestamps } from "./shared/timestamps";
 
 export const Videos: CollectionConfig = {
   slug: "videos",
@@ -45,5 +46,6 @@ export const Videos: CollectionConfig = {
         description: "YouTube or other video URL",
       },
     },
+    ...timestamps,
   ],
 };

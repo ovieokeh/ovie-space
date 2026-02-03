@@ -17,7 +17,7 @@ interface MediaPageClientProps {
 export function MediaPageClient({ media, header }: MediaPageClientProps) {
   const timelineItems = media.map((item) => ({
     id: item.title,
-    date: new Date(item.updatedAt),
+    date: new Date(item.publishedAt ?? item.createdAt),
     content: <MediaCard media={item} />,
   }));
 

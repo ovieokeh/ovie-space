@@ -41,6 +41,7 @@ export async function getBooks() {
     personalReview: (book as any).personalReview || "",
     updatedAt: book.updatedAt,
     createdAt: book.createdAt,
+    publishedAt: book.publishedAt,
   }));
 }
 
@@ -60,6 +61,7 @@ export async function getMedia() {
     imageUrl: item.imageUrl ? decodeURIComponent(item.imageUrl) : "",
     updatedAt: item.updatedAt,
     createdAt: item.createdAt,
+    publishedAt: item.publishedAt || null,
   }));
 }
 
@@ -78,6 +80,7 @@ export async function getVideos() {
     videoUrl: video.videoUrl,
     createdAt: video.createdAt,
     updatedAt: video.updatedAt,
+    publishedAt: video.publishedAt || null,
   }));
 }
 
@@ -103,6 +106,7 @@ export async function getProjects() {
           image: featured.imageUrl || "",
           createdAt: featured.createdAt,
           updatedAt: featured.updatedAt,
+          publishedAt: featured.publishedAt || null,
         }
       : null,
     others: others.map((project) => ({
@@ -113,6 +117,7 @@ export async function getProjects() {
       linkUrl: project.linkUrl,
       createdAt: project.createdAt,
       updatedAt: project.updatedAt,
+      publishedAt: project.publishedAt || null,
     })),
   };
 }
@@ -138,6 +143,7 @@ export async function getPosts() {
     publishedAt: post.publishedAt || null,
     lastUpdatedAt: post.lastUpdatedAt || null,
     coverImage: post.coverImage,
+    content: post.content,
   }));
 }
 

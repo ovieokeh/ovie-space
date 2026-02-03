@@ -22,7 +22,7 @@ interface ReadingPageClientProps {
 export function ReadingPageClient({ books, header, publications }: ReadingPageClientProps) {
   const timelineItems = books.map((book) => ({
     id: book.title,
-    date: new Date(book.updatedAt),
+    date: new Date(book.publishedAt ?? book.createdAt),
     content: <BookCard book={book} />,
   }));
 
