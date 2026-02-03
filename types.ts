@@ -9,7 +9,9 @@ export interface LinkPreviewData {
   url: string;
 }
 
-export type BookItem = (typeof readingData.library)[number];
+export type BookItem = (typeof readingData.library)[number] & {
+  personalReview?: string;
+};
 
 export type MediaItem = (typeof mediaData.library)[number];
 

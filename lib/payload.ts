@@ -38,6 +38,7 @@ export async function getBooks() {
     tags: extractTags(book.tags),
     description: extractTextFromRichText(book.description),
     imageUrl: book.imageUrl ? decodeURIComponent(book.imageUrl) : "",
+    personalReview: (book as any).personalReview || "",
   }));
 }
 
@@ -123,8 +124,8 @@ export async function getPosts() {
     title: post.title,
     slug: post.slug,
     excerpt: post.excerpt || "",
-    publishedAt: post.publishedAt,
-    lastUpdatedAt: post.lastUpdatedAt,
+    publishedAt: post.publishedAt || null,
+    lastUpdatedAt: post.lastUpdatedAt || null,
     coverImage: post.coverImage,
   }));
 }
@@ -153,8 +154,8 @@ export async function getPost(slug: string) {
     slug: post.slug,
     excerpt: post.excerpt || "",
     content: post.content,
-    publishedAt: post.publishedAt,
-    lastUpdatedAt: post.lastUpdatedAt,
+    publishedAt: post.publishedAt || null,
+    lastUpdatedAt: post.lastUpdatedAt || null,
     coverImage: post.coverImage,
   };
 }

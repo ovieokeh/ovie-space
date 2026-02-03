@@ -61,6 +61,12 @@ export const BookCard = ({ book }: BookCardProps) => {
           ))}
         </div>
         <Markdown components={markdownComponents}>{book.description}</Markdown>
+        {book.personalReview && (
+          <div className="mt-4 pt-4 border-t border-border">
+            <h4 className="text-sm font-semibold text-foreground mb-2">Personal Review</h4>
+            <Markdown components={markdownComponents}>{book.personalReview}</Markdown>
+          </div>
+        )}
       </div>
     </motion.div>
   );
