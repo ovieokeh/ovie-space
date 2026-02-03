@@ -81,9 +81,7 @@ Here are a few projects where I've experienced this firsthand, from building com
       {
         icon: Film,
         title: "Media & Film",
-        text: `I used to watch a lot more movies and TV shows when I was younger, but these days, I probably visit the cinema once every few months.
-
-        I still enjoy a good story though, whether it's a mind-breaking plot twist like in "Incendies" or a painfully sweet story like "Eternal Sunshine of the Spotless Mind".
+        text: `I enjoy a good story, whether it's a mind-breaking plot twist like in "Incendies" or a horror story like "Eternal Sunshine of the Spotless Mind".
         `,
         linkText: "See My Media List",
         linkUrl: "/media",
