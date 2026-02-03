@@ -4,17 +4,7 @@ import { MediaCard } from "@/components/cards/MediaCard";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { VerticalTimeline } from "@/components/layout/VerticalTimeline";
 import { sectionVariants } from "@/styling/variants";
-
-interface MediaItem {
-  title: string;
-  type: string;
-  status: string;
-  tags: string[];
-  description: string;
-  imageUrl: string;
-  updatedAt: string;
-  createdAt: string;
-}
+import { MediaItem } from "@/types";
 
 interface MediaPageClientProps {
   media: MediaItem[];
@@ -33,12 +23,7 @@ export function MediaPageClient({ media, header }: MediaPageClientProps) {
 
   return (
     <PageLayout title={header.title} description={header.description} maxWidth="wide">
-      <motion.section
-        id="media-library"
-        variants={sectionVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.section id="media-library" variants={sectionVariants} initial="hidden" animate="visible">
         <VerticalTimeline items={timelineItems} />
       </motion.section>
     </PageLayout>

@@ -4,17 +4,7 @@ import { VideoCard } from "@/components/cards/VideoCard";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { VerticalTimeline } from "@/components/layout/VerticalTimeline";
 import { sectionVariants } from "@/styling/variants";
-
-interface VideoItem {
-  title: string;
-  description: string;
-  tags: string[];
-  date: string;
-  thumbnailUrl: string;
-  videoUrl: string;
-  updatedAt: string;
-  createdAt: string;
-}
+import { VideoItem } from "@/types";
 
 interface HobbiesPageClientProps {
   videos: VideoItem[];
