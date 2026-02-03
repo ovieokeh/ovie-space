@@ -9,6 +9,7 @@ export const mediaData = {
       type: "Movie",
       status: "Watched",
       tags: ["Drama", "Adventure"],
+      date: "2024-12-20",
       description: `A mother's last wish sends twin siblings Nawal and Simon on a journey to the Middle East to uncover her hidden past and fulfill her final request.
       The film explores themes of family, identity, and the impact of war on personal lives.
       The plot twist was so unexpected that my friend refused to believe it was inspired by a true story.
@@ -20,6 +21,7 @@ export const mediaData = {
       type: "Movie",
       status: "Watched",
       tags: ["Drama", "Romance"],
+      date: "2024-11-15",
       description: `Two childhood friends, Nora and Hae Sung, reunite after 20 years apart. Their relationship is tested as they navigate their feelings for each other and the paths their lives have taken.
       The film has a sort of bitter-sweet, melancholic vibe that lingers long after the credits roll.`,
       imageUrl:
@@ -30,6 +32,7 @@ export const mediaData = {
       type: "Show",
       status: "Watched",
       tags: ["Comedy", "Family"],
+      date: "2024-10-05",
       description: ` A mockumentary-style sitcom that follows the lives of three diverse families as they navigate the ups and downs of modern life.
       The show is known for its witty humor, relatable characters, and heartwarming moments. It's a perfect blend of comedy and family dynamics that keeps you laughing and feeling good.`,
       imageUrl:
@@ -40,6 +43,7 @@ export const mediaData = {
       type: "Movie",
       status: "Watched",
       tags: ["Sci-Fi", "Adventure"],
+      date: "2024-09-12",
       description: `A team of explorers travels through a wormhole in space in an attempt to ensure humanity's survival. The film explores themes of love, sacrifice, and the nature of time.
       The visuals are stunning, and the soundtrack by Hans Zimmer is hauntingly beautiful.`,
       imageUrl:
@@ -50,6 +54,7 @@ export const mediaData = {
       type: "Movie",
       status: "Watched",
       tags: ["Action", "Drama"],
+      date: "2024-08-20",
       description: `After more than thirty years of service as one of the Navy's top aviators, Pete "Maverick" Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him.
       The film is a thrilling ride with breathtaking aerial sequences and a nostalgic nod to the original Top Gun.`,
       imageUrl:
@@ -60,6 +65,7 @@ export const mediaData = {
       type: "Movie",
       status: "Watched",
       tags: ["Anime", "Adventure"],
+      date: "2024-08-05",
       description: `The film follows 17-year-old high school girl Suzume Iwato and young stranger Souta Munakata, who team up to prevent a series of disasters across Japan.`,
       imageUrl: "https://m.media-amazon.com/images/I/81FQJBtwl-L._UF894,1000_QL80_.jpg",
     },

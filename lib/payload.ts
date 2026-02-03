@@ -39,6 +39,8 @@ export async function getBooks() {
     description: extractTextFromRichText(book.description),
     imageUrl: book.imageUrl ? decodeURIComponent(book.imageUrl) : "",
     personalReview: (book as any).personalReview || "",
+    updatedAt: book.updatedAt,
+    createdAt: book.createdAt,
   }));
 }
 
@@ -56,6 +58,8 @@ export async function getMedia() {
     tags: extractTags(item.tags),
     description: extractTextFromRichText(item.description),
     imageUrl: item.imageUrl ? decodeURIComponent(item.imageUrl) : "",
+    updatedAt: item.updatedAt,
+    createdAt: item.createdAt,
   }));
 }
 
@@ -72,6 +76,8 @@ export async function getVideos() {
     tags: extractTags(video.tags),
     thumbnailUrl: video.thumbnailUrl || "",
     videoUrl: video.videoUrl,
+    createdAt: video.createdAt,
+    updatedAt: video.updatedAt,
   }));
 }
 
@@ -94,6 +100,9 @@ export async function getProjects() {
           description: extractTextFromRichText(featured.description),
           linkText: featured.linkText || "Learn More",
           linkUrl: featured.linkUrl,
+          image: featured.imageUrl || "",
+          createdAt: featured.createdAt,
+          updatedAt: featured.updatedAt,
         }
       : null,
     others: others.map((project) => ({
@@ -102,6 +111,8 @@ export async function getProjects() {
       description: extractTextFromRichText(project.description),
       linkText: project.linkText || "Learn More",
       linkUrl: project.linkUrl,
+      createdAt: project.createdAt,
+      updatedAt: project.updatedAt,
     })),
   };
 }

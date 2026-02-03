@@ -1,0 +1,84 @@
+.isbn-field-wrapper {
+  position: relative;
+
+  .isbn-field-input-wrapper {
+    margin-top: 0.25rem;
+  }
+
+  .isbn-field-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: var(--theme-elevation-50);
+    border: 1px solid var(--theme-elevation-150);
+    border-radius: 4px;
+    color: var(--theme-text);
+    transition: border-color 0.15s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: var(--theme-success-500);
+      box-shadow: 0 0 0 2px var(--theme-success-100);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background-color: var(--theme-elevation-100);
+    }
+  }
+
+  .field-description {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--theme-elevation-500);
+  }
+
+  .isbn-field-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: var(--theme-elevation-100);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--theme-elevation-600);
+  }
+
+  .isbn-field-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--theme-elevation-200);
+    border-top-color: var(--theme-elevation-600);
+    border-radius: 50%;
+    animation: isbn-spin 0.8s linear infinite;
+  }
+
+  @keyframes isbn-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .isbn-field-error {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: var(--theme-error-50, #fef2f2);
+    border: 1px solid var(--theme-error-200, #fecaca);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--theme-error-600, #dc2626);
+  }
+
+  .isbn-field-success {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background-color: var(--theme-success-50, #f0fdf4);
+    border: 1px solid var(--theme-success-200, #bbf7d0);
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--theme-success-600, #16a34a);
+  }
+}

@@ -24,7 +24,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-1">
             {globalContent.nav.links.map((link) => {
               const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
               return (
@@ -32,8 +32,10 @@ export function Header() {
                   key={link.name}
                   href={link.href}
                   className={cn(
-                    "text-sm font-medium transition-colors duration-200",
-                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    "text-sm font-medium transition-all duration-200 px-3 py-1.5 rounded-md",
+                    isActive
+                      ? "text-foreground bg-secondary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                   )}
                 >
                   {link.name}
@@ -72,7 +74,12 @@ export function Header() {
                     key={link.name}
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={cn("text-sm font-medium", isActive ? "text-foreground" : "text-muted-foreground")}
+                    className={cn(
+                      "text-sm font-medium px-4 py-2 rounded-md transition-colors",
+                      isActive
+                        ? "text-foreground bg-secondary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    )}
                   >
                     {link.name}
                   </Link>

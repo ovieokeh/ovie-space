@@ -51,7 +51,7 @@ export const BookCard = ({ book }: BookCardProps) => {
         <p className="text-muted-foreground mb-4 text-sm">{book.author}</p>
         <div className="flex items-center gap-2 mb-4">
           <span className={`text-xs font-medium px-2 py-1 rounded-full ${statusColor}`}>{book.status}</span>
-          {book.tags.map((tag) => (
+          {book.tags?.map((tag) => (
             <span
               key={tag}
               className="text-xs font-medium px-2 py-1 rounded-full bg-secondary border border-border text-muted-foreground"

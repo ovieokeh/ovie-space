@@ -13,6 +13,7 @@ export const readingData = {
       author: "Cixin Liu",
       status: "Finished",
       tags: ["Science", "Fiction"],
+      date: "2024-12-15",
       description: `The Three-Body Problem trilogy, starting with "The Three-Body Problem" followed by "The Dark Forest" and "Death's End", is a groundbreaking Chinese science fiction series that begins during China's Cultural Revolution.
 
 When a secret military project establishes contact with aliens, humanity faces an impending invasion from the Trisolaris civilization. As Earth prepares for this existential threat, the story spans centuries, exploring profound questions about civilization, technology, and humanity's place in the cosmos.
@@ -32,6 +33,7 @@ Purchase the trilogy:
       author: "Richard Feynman",
       status: "Reading",
       tags: ["Biography"],
+      date: "2025-01-20",
       description: `In "Surely You're Joking, Mr. Feynman!", the legendary physicist Richard Feynman shares a collection of autobiographical stories that showcase his curiosity, humor, and unconventional approach to life and science.
 
 From picking locks at Los Alamos during the Manhattan Project to learning to play bongo drums in Brazil, Feynman's adventures reveal the playful spirit behind his brilliant scientific mind.
@@ -50,6 +52,7 @@ Purchase the book:
       author: "Trevor Noah",
       status: "Finished",
       tags: ["Biography"],
+      date: "2024-11-10",
       description: `"Born a Crime" is Trevor Noah's compelling memoir about growing up in apartheid and post-apartheid South Africa. As the child of a black mother and white father, his very existence was illegal under apartheid law. Through a series of vivid, often hilarious stories, Noah details his remarkable journey from a sheltered childhood to becoming a renowned comedian.
 
 The heart of the story is his unbreakable bond with his fearless, rebellious mother who defied a brutal system to give her son a better life.
@@ -67,6 +70,7 @@ Purchase the book:
       author: "Adrian Tchaikovsky",
       status: "Finished",
       tags: ["Science", "Fiction"],
+      date: "2024-09-05",
       description: `In "Children of Time," humanity's last remnants search for a new home among the stars after Earth's devastation. They discover a terraformed planet, meticulously engineered for human habitation. However, a twist of fate leads to the planet being colonized by spiders who, through an evolutionary virus, develop remarkable intelligence over millennia.
 
 As humans finally arrive, they face an evolved arachnid civilization, leading to a fascinating exploration of consciousness, civilization, and what it truly means to be intelligent. Tchaikovsky masterfully weaves themes of evolution, artificial intelligence, and the persistence of life.
@@ -82,6 +86,7 @@ Purchase the book:
       author: "Adrian Tchaikovsky",
       status: "Finished",
       tags: ["Science", "Fiction"],
+      date: "2024-10-20",
       description: `In "Children of Ruin," Adrian Tchaikovsky continues the epic space exploration saga begun in "Children of Time." Following the events of the first book, humanity's descendants and their uplifted spider allies discover another terraformed world.
 
 This planet harbors not one but two evolved species: octopuses with their remarkable distributed intelligence, and something far more alien and dangerous. As these civilizations clash and try to understand each other, they face an unprecedented threat that challenges their very concepts of consciousness and communication.
@@ -101,6 +106,7 @@ Purchase the book:
       author: "Yuval Harari",
       status: "Finished",
       tags: ["Science", "History"],
+      date: "2024-07-15",
       description: `Sapiens: A Brief History of Humankind is a groundbreaking exploration of human history that traces our species' journey from prehistoric times to the present. Dr. Yuval Noah Harari examines how Homo sapiens emerged from being an insignificant animal to becoming the dominant force on Earth. The book explores major revolutions in human history: the Cognitive Revolution, the Agricultural Revolution, and the Scientific Revolution, showing how they shaped our societies and cultures.
 
 Through engaging storytelling and profound insights, Harari challenges our assumptions about civilization, religion, economics, and the future of humanity.
@@ -116,6 +122,7 @@ Purchase the book:
       author: "Jennette McCurdy",
       status: "Finished",
       tags: ["Biography"],
+      date: "2024-08-25",
       description: `In "I'm Glad My Mother Died," former Nickelodeon star Jennette McCurdy delivers a raw and unflinching memoir that explores her complex relationship with her abusive, controlling mother and the dark side of child stardom.
 
 Through darkly humorous and deeply moving prose, McCurdy details her journey through eating disorders, anxiety, and the exploitation she faced in Hollywood, all while under the manipulation of her mother who pushed her into acting at age six.
@@ -134,7 +141,8 @@ Purchase the book:
       author: "Jack London",
       status: "Finished",
       tags: ["Fiction"],
-      description: `Set during the 1890s Klondike Gold Rush, "The Call of the Wild" follows Buck, a domesticated dog who is kidnapped from his comfortable California home and sold as a sled dog in Alaska. 
+      date: "2024-06-10",
+      description: `Set during the 1890s Klondike Gold Rush, "The Call of the Wild" follows Buck, a domesticated dog who is kidnapped from his comfortable California home and sold as a sled dog in Alaska.
 
 Through a series of challenging experiences and brutal encounters, Buck must adapt to the harsh realities of the Northland. As he faces increasingly difficult situations, Buck gradually sheds his civilized nature and embraces his primitive instincts.
 
@@ -151,6 +159,7 @@ Purchase the book:
       author: "Paul Kalanithi",
       status: "Finished",
       tags: ["Biography"],
+      date: "2024-05-20",
       description: `"When Breath Becomes Air" is a profound memoir written by Paul Kalanithi, a brilliant neurosurgeon who, at age 36, faces a terminal cancer diagnosis.
 
 The book explores his transformation from doctor to patient, weaving together his medical career, philosophical insights, and deeply personal journey. Kalanithi grapples with questions of mortality, meaning, and what makes life worth living while confronting his own impending death.

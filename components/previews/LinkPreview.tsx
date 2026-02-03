@@ -40,7 +40,7 @@ export function LinkPreviewImage({
     };
   }, [url]);
 
-  const imgSrc = data?.image || placeholderSrc;
+  const imgSrc = data?.image || url || placeholderSrc;
   const altText = data?.title || "Website preview";
 
   return (

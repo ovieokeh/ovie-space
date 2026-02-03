@@ -34,7 +34,6 @@ function formatDate(dateString: string | null): string {
 function estimateReadingTime(content: SerializedEditorState | null): number {
   if (!content || !content.root || !content.root.children) return 1;
 
-  // Rough estimation: count text nodes and estimate words
   const countText = (node: unknown): number => {
     if (!node || typeof node !== "object") return 0;
     const n = node as { text?: string; children?: unknown[] };

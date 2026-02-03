@@ -157,6 +157,10 @@ export interface User {
  */
 export interface Book {
   id: number;
+  /**
+   * ISBN-10 or ISBN-13 to autopopulate book details
+   */
+  isbn?: string | null;
   title: string;
   author: string;
   status: 'Reading' | 'Finished' | 'Want to Read';
@@ -185,6 +189,10 @@ export interface Book {
    * URL to the book cover image
    */
   imageUrl?: string | null;
+  /**
+   * Your personal thoughts and review of the book
+   */
+  personalReview?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -493,6 +501,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "books_select".
  */
 export interface BooksSelect<T extends boolean = true> {
+  isbn?: T;
   title?: T;
   author?: T;
   status?: T;
@@ -504,6 +513,7 @@ export interface BooksSelect<T extends boolean = true> {
       };
   description?: T;
   imageUrl?: T;
+  personalReview?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -1,6 +1,4 @@
-import { hobbiesData } from "./content/hobbies";
-import { mediaData } from "./content/media";
-import { readingData } from "./content/reading";
+import { getBooks, getMedia, getPosts, getProjects, getVideos } from "./lib/payload";
 
 export interface LinkPreviewData {
   title: string;
@@ -9,10 +7,16 @@ export interface LinkPreviewData {
   url: string;
 }
 
-export type BookItem = (typeof readingData.library)[number] & {
-  personalReview?: string;
-};
+export type BookItems = Awaited<ReturnType<typeof getBooks>>;
+export type BookItem = BookItems[number];
 
-export type MediaItem = (typeof mediaData.library)[number];
+export type MediaItems = Awaited<ReturnType<typeof getMedia>>;
+export type MediaItem = MediaItems[number];
 
-export type VideoItem = (typeof hobbiesData.videos)[number];
+export type ProjectItems = Awaited<ReturnType<typeof getProjects>>;
+
+export type PostItems = Awaited<ReturnType<typeof getPosts>>;
+export type PostItem = PostItems[number];
+
+export type VideoItems = Awaited<ReturnType<typeof getVideos>>;
+export type VideoItem = VideoItems[number];
