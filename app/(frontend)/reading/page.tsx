@@ -1,7 +1,8 @@
+import type { Metadata } from "next";
 import { getBooks } from "@/lib/payload";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { ReadingPageClient } from "./ReadingPageClient";
 
-// Static page content (not in CMS)
 const pageContent = {
   header: {
     title: "Library",
@@ -17,8 +18,33 @@ const pageContent = {
   },
 };
 
+export const metadata: Metadata = {
+  title: "Library",
+  description:
+    "Books that have shaped Ovie Okeh's thinking — from sci-fi and philosophy to biographies — plus technical publications.",
+  alternates: {
+    canonical: "https://ovie.dev/reading",
+  },
+  openGraph: {
+    title: "Library",
+    description:
+      "Books that have shaped Ovie Okeh's thinking — from sci-fi and philosophy to biographies — plus technical publications.",
+    url: "https://ovie.dev/reading",
+  },
+};
+
 export default async function ReadingPage() {
   const books = await getBooks();
 
-  return <ReadingPageClient books={books} header={pageContent.header} publications={pageContent.publications} />;
+  const jsonLd = breadcrumbJsonLd([
+    { name: "Home", url: "https://ovie.dev" },
+    { name: "Library", url: "https://ovie.dev/reading" },
+  ]);
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <ReadingPageClient books={books} header={pageContent.header} publications={pageContent.publications} />
+    </>
+  );
 }

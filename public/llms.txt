@@ -1,0 +1,51 @@
+# Ovie.dev — LLM Context
+
+## Site Identity
+- Name: Ovie.dev
+- Owner: Ovie Okeh
+- URL: https://ovie.dev
+
+## About Ovie Okeh
+Ovie Okeh is a full-stack developer and product designer based in the Netherlands. He builds software that solves real problems, with a focus on business applications, travel technology, and community platforms.
+
+### Professional Background
+- Full-Stack Developer at Bird (2022–2025): Built comprehensive business management applications
+- Frontend Developer at Eurail (2020–2022): Built timetable and trip planner features for millions of European travelers
+- Technical Writer: Published articles on LogRocket and OpenReplay covering React, Node.js, and web development
+
+### Current Work
+Building Kindling — a platform for guided, community-driven routines designed to foster personal growth through shared practices.
+
+### Technical Expertise
+- Frontend: React, Next.js, TypeScript, Tailwind CSS
+- Backend: Node.js, PostgreSQL, REST APIs, GraphQL
+- Interests: AI tools, automation, trading bots, creative coding
+
+## Site Structure
+
+### Main Pages
+- / — Homepage with projects and interests
+- /about — Detailed biography and professional background
+- /blog — Technical articles and thoughts
+- /reading — Book collection and reviews
+- /media — Movies and shows watched
+- /hobbies — Creative projects, piano performances, vlogs
+
+### Key Content
+- Blog posts on web development, product design, and technology
+- Book reviews covering sci-fi, philosophy, and biographies
+- Personal reviews of films and shows
+- Piano performance videos and creative projects
+
+## Contact
+- Email: kevinokeh@gmail.com
+- GitHub: https://github.com/ovieokeh
+- LinkedIn: https://linkedin.com/in/ovieokeh
+
+## Publications
+- LogRocket Blog: https://blog.logrocket.com/author/ovieokeh/
+- OpenReplay Blog: https://blog.openreplay.com/authors/ovie-okeh/
+
+## Feeds
+- RSS: https://ovie.dev/feed.xml
+- Sitemap: https://ovie.dev/sitemap.xml

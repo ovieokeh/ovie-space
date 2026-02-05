@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/core/Header";
 import { Footer } from "@/components/core/Footer";
 import { Providers } from "@/components/Providers";
+import { personJsonLd, webSiteJsonLd } from "@/lib/structured-data";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -17,16 +18,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ovie.dev"),
-
-  title: { default: "Ovie Okeh", template: "%s | Ovie.dev" },
-  description: "Ovie Okeh's personal website, showcasing my projects, hobbies, and interests.",
+  title: { default: "Ovie Okeh — Developer & Designer", template: "%s | Ovie.dev" },
+  description:
+    "Ovie Okeh is a full-stack developer and product designer based in the Netherlands, building business applications, travel technology, and community platforms with React, Next.js, and TypeScript.",
   alternates: {
     canonical: "https://ovie.dev",
-    languages: { en: "/en" },
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
   },
   openGraph: {
-    title: "Ovie Okeh",
-    images: "/images/ovie-dev-og.png",
+    type: "website",
+    siteName: "Ovie.dev",
+    title: "Ovie Okeh — Developer & Designer",
+    description:
+      "Full-stack developer and product designer based in the Netherlands. Building with React, Next.js, and TypeScript.",
+    url: "https://ovie.dev",
+    images: [{ url: "/images/ovie-dev-og.png", width: 1200, height: 630, alt: "Ovie.dev" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ovie Okeh — Developer & Designer",
+    description:
+      "Full-stack developer and product designer based in the Netherlands. Building with React, Next.js, and TypeScript.",
+    images: ["/images/ovie-dev-og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -38,6 +57,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([webSiteJsonLd(), personJsonLd()]) }}
+        />
         <Providers>
           <Header />
           {children}

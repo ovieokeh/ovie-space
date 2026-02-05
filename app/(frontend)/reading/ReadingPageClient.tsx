@@ -26,8 +26,30 @@ export function ReadingPageClient({ books, header, publications }: ReadingPageCl
     content: <BookCard book={book} />,
   }));
 
+  const finishedCount = books.filter((b) => b.status === "Finished").length;
+  const readingCount = books.filter((b) => b.status === "Reading").length;
+
   return (
     <PageLayout title={header.title} description={header.description} maxWidth="wide">
+      {/* Prose Introduction */}
+      <motion.section
+        className="mb-12 prose prose-lg dark:prose-invert max-w-none"
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <p className="text-foreground/90 leading-relaxed">
+          Reading is one of my favorite ways to explore new ideas and perspectives. I gravitate toward books that craft
+          compelling narratives, explore different realities, or provide insights into the human condition. Science
+          fiction, philosophy, and biographies are my go-to genres.
+        </p>
+        <p className="text-foreground/90 leading-relaxed">
+          This library contains {books.length} books I've encountered—{finishedCount} finished
+          {readingCount > 0 && `, ${readingCount} currently reading`}. Each entry includes my personal thoughts and
+          takeaways where I've had a chance to reflect on them.
+        </p>
+      </motion.section>
+
       {/* Book Timeline */}
       <motion.section id="library" className="mb-16" variants={sectionVariants} initial="hidden" animate="visible">
         <VerticalTimeline items={timelineItems} />
