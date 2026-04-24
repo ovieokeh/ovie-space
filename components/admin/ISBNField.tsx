@@ -218,6 +218,7 @@ export const ISBNField: TextFieldClientComponent = (props) => {
                 }}
               >
                 {result.coverId ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- 40x60 admin-only thumbnail; next/image adds friction for no LCP benefit
                   <img
                     src={`https://covers.openlibrary.org/b/id/${result.coverId}-S.jpg`}
                     alt="cover"

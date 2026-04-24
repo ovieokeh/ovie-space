@@ -184,6 +184,7 @@ export const MediaLookupField: TextFieldClientComponent = (props) => {
             >
               <div className="media-lookup-result-poster">
                 {result.posterUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element -- small admin-only poster thumbnail; next/image adds friction for no LCP benefit
                   <img src={result.posterUrl} alt={result.title} />
                 ) : (
                   <div className="media-lookup-result-no-poster">No Image</div>

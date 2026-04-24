@@ -8,7 +8,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
-    "seed": "node --env-file=.env.local --import tsx scripts/seed.ts"
+    "typecheck": "tsc --noEmit",
+    "seed": "node --env-file=.env.local --import tsx scripts/seed.ts",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix --max-warnings=0"
+    ]
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.70.0",
@@ -41,6 +48,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"

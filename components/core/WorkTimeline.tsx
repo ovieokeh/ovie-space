@@ -84,7 +84,7 @@ function Thumbnail({ item, className = "h-16 w-16" }: { item: TimelineProject; c
       <LinkPreviewImage
         url={item.linkUrl}
         src={item.image || undefined}
-        className="w-full h-full object-cover"
+        className="size-full object-cover"
       />
     </div>
   );
@@ -113,7 +113,7 @@ function HeroItem({ item }: { item: TimelineProject }) {
     <GlassCard hoverEffect={false} className="overflow-hidden p-0">
       <div className="grid md:grid-cols-5">
         <div className="md:col-span-3 relative aspect-video">
-          <LinkPreviewImage url={item.linkUrl} src={item.image || undefined} className="w-full h-full object-cover" />
+          <LinkPreviewImage url={item.linkUrl} src={item.image || undefined} className="size-full object-cover" />
         </div>
         <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center">
           <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">{item.title}</h3>
