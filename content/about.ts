@@ -1,11 +1,11 @@
 export const aboutContent = {
   header: {
     title: "About Me",
-    subtitle: "Developer, Designer, Builder",
+    subtitle: "Builder & Engineer",
   },
-  intro: `I'm Ovie Okeh, a full-stack developer and product designer based in the Netherlands. I build software that solves real problems for real people.
+  intro: `I'm Ovie Okeh, a builder and engineer based in the Netherlands. I ship software end-to-end—spec, architecture, implementation, release—across TypeScript, Swift, and Rust.
 
-I believe technology, when wielded with intention, is the most powerful tool for solving human challenges. This belief drives everything I create—from complex business applications to experimental side projects.`,
+I believe technology, when wielded with intention, is the most powerful tool for solving human challenges. That belief runs through everything I build, from production systems at work to the workshop of personal projects I keep running on the side.`,
 
   currentFocus: {
     title: "Current Focus",

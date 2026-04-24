@@ -5,8 +5,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface LinkPreviewImageProps {
-  /** The target page we want to preview */
+  /** The target page we want to preview (used for OG scraping when no override) */
   url: string;
+  /** Explicit image URL. When set, bypasses scraping entirely. */
+  src?: string;
   /** Extra classes for sizing / styling (eg. rounded-lg …) */
   className?: string;
   /** Fallback placeholder while loading / erroring */
@@ -15,13 +17,19 @@ interface LinkPreviewImageProps {
 
 export function LinkPreviewImage({
   url,
+  src,
   className = "",
   placeholderSrc = "https://placehold.co/800x600/0f172a/94a3b8?text=Loading…",
 }: LinkPreviewImageProps) {
   const [data, setData] = useState<LinkPreviewData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!src);
+  const shouldScrape = !src && Boolean(url);
 
   useEffect(() => {
+    if (!shouldScrape) {
+      setLoading(false);
+      return;
+    }
     let cancelled = false;
     (async () => {
       try {
@@ -38,9 +46,9 @@ export function LinkPreviewImage({
     return () => {
       cancelled = true;
     };
-  }, [url]);
+  }, [url, shouldScrape]);
 
-  const imgSrc = data?.image || url || placeholderSrc;
+  const imgSrc = src || data?.image || placeholderSrc;
   const altText = data?.title || "Website preview";
 
   return (

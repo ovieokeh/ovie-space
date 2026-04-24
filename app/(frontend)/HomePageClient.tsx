@@ -52,7 +52,7 @@ interface HomePageClientProps {
 export function HomePageClient({ projects }: HomePageClientProps) {
   return (
     <div className="bg-background text-foreground font-sans antialiased min-h-screen">
-      <main className="pt-24 sm:pt-32">
+      <main>
         {/* --- Hero Section --- */}
         <section
           id={homepageContent.hero.id}
@@ -82,6 +82,25 @@ export function HomePageClient({ projects }: HomePageClientProps) {
           </motion.div>
         </section>
 
+        {/* --- Now Section --- */}
+        <motion.section
+          id={homepageContent.now.id}
+          className="container mx-auto px-6 pb-8"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <div className="max-w-2xl mx-auto border-l-2 border-border pl-6 py-2">
+            <p className="text-sm font-medium text-foreground/80 uppercase tracking-wide mb-2">
+              {homepageContent.now.label}
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              {homepageContent.now.text}
+            </p>
+          </div>
+        </motion.section>
+
         {/* --- Work Section --- */}
         <motion.section
           id={homepageContent.work.id}
@@ -105,7 +124,11 @@ export function HomePageClient({ projects }: HomePageClientProps) {
               <GlassCard hoverEffect={false} className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8 items-center p-8">
                 <div className="md:col-span-3">
                   <div className="relative aspect-video rounded-lg overflow-hidden">
-                    <LinkPreviewImage url={projects.featured.image} className="w-full h-full object-cover" />
+                    <LinkPreviewImage
+                      url={projects.featured.linkUrl}
+                      src={projects.featured.image || undefined}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <div className="md:col-span-2">
@@ -143,7 +166,11 @@ export function HomePageClient({ projects }: HomePageClientProps) {
                 >
                   <GlassCard hoverEffect className="h-full p-8 flex flex-col">
                     <div className="relative aspect-video mb-6 rounded-lg overflow-hidden border border-border">
-                      <LinkPreviewImage url={project.linkUrl} className="object-cover w-full h-full" />
+                      <LinkPreviewImage
+                        url={project.linkUrl}
+                        src={project.image || undefined}
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                     <h4 className="text-2xl font-bold text-foreground mb-2">{project.title}</h4>
                     <p className="text-muted-foreground mb-4 flex-grow">

@@ -3,13 +3,18 @@ import { Linkedin, Github, Music, BookOpen, Film } from "lucide-react";
 export const homepageContent = {
   hero: {
     id: "hero",
-    subheading: "DEVELOPER & DESIGNER | NETHERLANDS",
+    subheading: "BUILDER · ENGINEER · NETHERLANDS",
     heading: "Human, Builder, Serial Hobbyist.",
     description: "Hi, I'm Ovie. This is my digital space—a place to share my work and interests",
     buttons: {
       primary: "See My Work",
       secondary: "Get in Touch",
     },
+  },
+  now: {
+    id: "now",
+    label: "Now — April 2026",
+    text: "Contracting on cloud-infrastructure tooling and building sounddojo—a Swift companion for piano practice—on the side. Based in Utrecht.",
   },
   work: {
     id: "work",
