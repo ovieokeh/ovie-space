@@ -35,18 +35,32 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
-      name: "isFeatured",
-      type: "checkbox",
-      defaultValue: false,
-      admin: {
-        description: "Show this project in the featured section",
-      },
-    },
-    {
       name: "order",
       type: "number",
       admin: {
         description: "Display order (lower numbers appear first)",
+      },
+    },
+    {
+      name: "timelineCheckpoint",
+      type: "relationship",
+      relationTo: "timeline-checkpoints",
+      admin: {
+        description: "Which timeline checkpoint this project belongs to. Leave empty to hide from timeline.",
+      },
+    },
+    {
+      name: "timelineBadge",
+      type: "text",
+      admin: {
+        description: 'Badge shown inside a stacked checkpoint (e.g. "2022 — 2025", "Earlier"). Optional.',
+      },
+    },
+    {
+      name: "timelineOrder",
+      type: "number",
+      admin: {
+        description: "Order within the timeline checkpoint (for stack / grid variants).",
       },
     },
     ...timestamps,

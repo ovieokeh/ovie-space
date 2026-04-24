@@ -32,13 +32,13 @@ export function HobbiesPageClient({ videos, header }: HobbiesPageClientProps) {
       >
         <p className="text-foreground/90 leading-relaxed">
           Beyond coding, I spend my time exploring creative outlets and learning new skills. Playing the piano is a
-          major part of this—I'm drawn to classical pieces by Beethoven and contemporary works by Ludovico Einaudi.
-          There's something meditative about practicing a difficult passage until it finally clicks.
+          major part of this—I&apos;m drawn to classical pieces by Beethoven and contemporary works by Ludovico Einaudi.
+          There&apos;s something meditative about practicing a difficult passage until it finally clicks.
         </p>
         <p className="text-foreground/90 leading-relaxed">
-          This feed documents my creative journey: piano performances, vlogs, electronics projects, and other things I'm
-          working on. It's a way to track my progress and hopefully inspire myself whenever I feel stuck. If any of it
-          resonates with you, I'd love to hear about it.
+          This feed documents my creative journey: piano performances, vlogs, electronics projects, and other things I&apos;m
+          working on. It&apos;s a way to track my progress and hopefully inspire myself whenever I feel stuck. If any of it
+          resonates with you, I&apos;d love to hear about it.
         </p>
       </motion.section>
 

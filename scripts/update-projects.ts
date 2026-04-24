@@ -6,7 +6,6 @@ type Spec = {
   description: string;
   linkText: string;
   linkUrl: string;
-  isFeatured: boolean;
   order: number;
   imageUrl?: string;
 };
@@ -18,7 +17,6 @@ const specs: Spec[] = [
       "Native Swift app for piano practice — spec‑first gameplay model, built ground‑up. Current main build.",
     linkText: "Open sounddojo",
     linkUrl: "https://sounddojo.app",
-    isFeatured: true,
     order: 0,
   },
   {
@@ -27,7 +25,6 @@ const specs: Spec[] = [
       "Bird's all‑in‑one app for running a small business — invoicing, CRM, projects, payroll, messaging, all in one place. Worked on it full‑stack for three years until June 2025, shipping features end‑to‑end across the web app and the platform underneath.",
     linkText: "See Bird",
     linkUrl: "https://bird.com",
-    isFeatured: false,
     order: 1,
   },
   {
@@ -36,7 +33,6 @@ const specs: Spec[] = [
       "Built timetable and trip‑planner features on eurail.com, the site a lot of Europe uses to plan rail travel. Frontend‑focused role in a large distributed team. My first job in the European market.",
     linkText: "See Eurail",
     linkUrl: "https://eurail.com",
-    isFeatured: false,
     order: 2,
   },
   {
@@ -45,7 +41,6 @@ const specs: Spec[] = [
       "Front‑end at Pusher — realtime APIs for chat, presence, and live data. Early developer‑experience work and four published tutorials. Pusher was later acquired by MessageBird, which became Bird, where I ended up working years later. Small world.",
     linkText: "See on Pusher",
     linkUrl: "https://pusher.com/author/ovie-okeh",
-    isFeatured: false,
     order: 3,
   },
   {
@@ -54,7 +49,6 @@ const specs: Spec[] = [
       "An experiment in whether community and structure can help people actually stick to their goals. Platform for shared, guided routines — you join, show up, see others show up.",
     linkText: "Visit Kindling",
     linkUrl: "https://www.getkindling.app/en",
-    isFeatured: false,
     order: 4,
   },
   {
@@ -63,7 +57,6 @@ const specs: Spec[] = [
       "Tool for tracking how critical assets — oil, metals, grain, chips — flow between countries, and when those flows come under pressure. I built it because understanding squeezed supply chains explains a lot of what nation‑states actually do.",
     linkText: "Open BigPerspective",
     linkUrl: "https://bigperspective.ovie.dev",
-    isFeatured: false,
     order: 5,
   },
   {
@@ -72,7 +65,6 @@ const specs: Spec[] = [
       "Your WhatsApp, as a story — turn a chat export into shareable stats on reply speed, night‑owl energy, and who starts the chaos.",
     linkText: "Try it",
     linkUrl: "https://chatwrapped.ovie.dev",
-    isFeatured: false,
     order: 6,
   },
   {
@@ -81,7 +73,6 @@ const specs: Spec[] = [
       "The public workshop — open‑source experiments, tutorials, and half‑finished ideas. Currently a mix of Solana trading bots, AI meeting tools, and personal automation.",
     linkText: "See my GitHub",
     linkUrl: "https://github.com/ovieokeh",
-    isFeatured: false,
     order: 7,
   },
 ];
@@ -117,17 +108,17 @@ async function main() {
       description: toLexical(s.description),
       linkText: s.linkText,
       linkUrl: s.linkUrl,
-      isFeatured: s.isFeatured,
+
       order: s.order,
       ...(s.imageUrl !== undefined ? { imageUrl: s.imageUrl } : {}),
     };
 
     if (found) {
       await payload.update({ collection: "projects", id: found.id, data });
-      console.log(`  ↻ updated: ${s.title} (order=${s.order}, featured=${s.isFeatured})`);
+      console.log(`  ↻ updated: ${s.title} (order=${s.order})`);
     } else {
       await payload.create({ collection: "projects", data });
-      console.log(`  + created: ${s.title} (order=${s.order}, featured=${s.isFeatured})`);
+      console.log(`  + created: ${s.title} (order=${s.order})`);
     }
   }
 

@@ -117,7 +117,6 @@ async function seed() {
         },
         linkText: featured.linkText,
         linkUrl: featured.linkUrl,
-        isFeatured: true,
         order: 0,
       },
     });
@@ -153,7 +152,6 @@ async function seed() {
           imageUrl: project.image,
           linkText: project.linkText,
           linkUrl: project.linkUrl,
-          isFeatured: false,
           order: i + 1,
         },
       });

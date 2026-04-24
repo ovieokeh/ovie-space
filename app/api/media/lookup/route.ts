@@ -26,7 +26,6 @@ export interface MediaDetailResponse {
   error?: string;
 }
 
-const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const TMDB_API_ACCESS_TOKEN = process.env.TMDB_API_READ_ACCESS_TOKEN;
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
@@ -81,13 +80,23 @@ async function searchMedia(query: string): Promise<Response> {
 
     const data = await response.json();
 
+    type TMDBSearchItem = {
+      id: number;
+      media_type: string;
+      title?: string;
+      name?: string;
+      poster_path?: string | null;
+      release_date?: string;
+      first_air_date?: string;
+    };
+
     // Filter to only movies and TV shows, map to our format
-    const results: MediaSearchResult[] = data.results
-      .filter((item: any) => item.media_type === "movie" || item.media_type === "tv")
+    const results: MediaSearchResult[] = (data.results as TMDBSearchItem[])
+      .filter((item) => item.media_type === "movie" || item.media_type === "tv")
       .slice(0, 10)
-      .map((item: any) => ({
+      .map((item) => ({
         id: item.id,
-        title: item.media_type === "movie" ? item.title : item.name,
+        title: (item.media_type === "movie" ? item.title : item.name) ?? "",
         posterUrl: item.poster_path ? `${TMDB_IMAGE_BASE}${item.poster_path}` : null,
         releaseYear: extractYear(item.media_type === "movie" ? item.release_date : item.first_air_date),
         type: item.media_type === "movie" ? "Movie" : "Show",

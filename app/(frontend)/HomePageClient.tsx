@@ -6,9 +6,10 @@ import { ArrowUpRight } from "lucide-react";
 import { homepageContent } from "@/content/homepage";
 import { MultilineText } from "@/components/core/MultilineText";
 import { cardVariants, sectionVariants } from "@/styling/variants";
-import { LinkPreviewImage } from "@/components/previews/LinkPreview";
 import { Button } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { WorkTimeline } from "@/components/core/WorkTimeline";
+import type { TimelineCheckpoint } from "@/lib/payload";
 
 interface SocialLinkProps {
   href: string;
@@ -25,31 +26,11 @@ const SocialLink = ({ href, icon: Icon }: SocialLinkProps) => (
   </a>
 );
 
-interface Project {
-  image?: string;
-  title: string;
-  description: string;
-  linkText: string;
-  linkUrl: string;
-}
-
-interface FeaturedProject {
-  tag: string;
-  title: string;
-  description: string;
-  linkText: string;
-  linkUrl: string;
-  image: string;
-}
-
 interface HomePageClientProps {
-  projects: {
-    featured: FeaturedProject | null;
-    others: Project[];
-  };
+  timeline: TimelineCheckpoint[];
 }
 
-export function HomePageClient({ projects }: HomePageClientProps) {
+export function HomePageClient({ timeline }: HomePageClientProps) {
   return (
     <div className="bg-background text-foreground font-sans antialiased min-h-screen">
       <main>
@@ -110,7 +91,7 @@ export function HomePageClient({ projects }: HomePageClientProps) {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div className="container mx-auto px-6 space-y-8">
+          <div className="container mx-auto px-6">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 tracking-tight">
                 {homepageContent.work.title}
@@ -120,79 +101,7 @@ export function HomePageClient({ projects }: HomePageClientProps) {
               </p>
             </div>
 
-            {projects.featured && (
-              <GlassCard hoverEffect={false} className="max-w-6xl mx-auto grid md:grid-cols-5 gap-8 items-center p-8">
-                <div className="md:col-span-3">
-                  <div className="relative aspect-video rounded-lg overflow-hidden">
-                    <LinkPreviewImage
-                      url={projects.featured.linkUrl}
-                      src={projects.featured.image || undefined}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="md:col-span-2">
-                  <p className="text-foreground/80 font-medium mb-2 text-sm uppercase tracking-wide">
-                    {projects.featured.tag}
-                  </p>
-                  <h3 className="text-3xl font-bold text-foreground mb-4">{projects.featured.title}</h3>
-                  <p className="text-muted-foreground mb-6">{projects.featured.description}</p>
-                  <Button
-                    variant="link"
-                    asChild
-                    className="p-0 h-auto text-foreground font-semibold hover:no-underline group"
-                  >
-                    <a href={projects.featured.linkUrl}>
-                      {projects.featured.linkText}
-                      <ArrowUpRight
-                        className="ml-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                        size={18}
-                      />
-                    </a>
-                  </Button>
-                </div>
-              </GlassCard>
-            )}
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mt-12">
-              {projects.others.map((project, i) => (
-                <motion.div
-                  key={project.title}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ delay: i * 0.15 }}
-                >
-                  <GlassCard hoverEffect className="h-full p-8 flex flex-col">
-                    <div className="relative aspect-video mb-6 rounded-lg overflow-hidden border border-border">
-                      <LinkPreviewImage
-                        url={project.linkUrl}
-                        src={project.image || undefined}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <h4 className="text-2xl font-bold text-foreground mb-2">{project.title}</h4>
-                    <p className="text-muted-foreground mb-4 flex-grow">
-                      <MultilineText text={project.description} />
-                    </p>
-                    <Button
-                      variant="link"
-                      asChild
-                      className="p-0 h-auto text-foreground font-semibold hover:no-underline group justify-start"
-                    >
-                      <a href={project.linkUrl}>
-                        {project.linkText}
-                        <ArrowUpRight
-                          className="ml-2 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                          size={18}
-                        />
-                      </a>
-                    </Button>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </div>
+            <WorkTimeline checkpoints={timeline} />
           </div>
         </motion.section>
 

@@ -34,7 +34,7 @@ export function MediaPageClient({ media, header }: MediaPageClientProps) {
         animate="visible"
       >
         <p className="text-foreground/90 leading-relaxed">
-          I love a good story, whether it's a mind-bending plot twist, a quiet character study, or an emotional journey
+          I love a good story, whether it&apos;s a mind-bending plot twist, a quiet character study, or an emotional journey
           that stays with you long after the credits roll. Films like <em>Incendies</em>, <em>Past Lives</em>, and{" "}
           <em>Eternal Sunshine of the Spotless Mind</em> are the kind that resonate with me most.
         </p>

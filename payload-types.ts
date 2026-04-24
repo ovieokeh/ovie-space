@@ -72,6 +72,7 @@ export interface Config {
     media: Media;
     videos: Video;
     projects: Project;
+    'timeline-checkpoints': TimelineCheckpoint;
     uploads: Upload;
     posts: Post;
     'payload-kv': PayloadKv;
@@ -86,6 +87,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     videos: VideosSelect<false> | VideosSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    'timeline-checkpoints': TimelineCheckpointsSelect<false> | TimelineCheckpointsSelect<true>;
     uploads: UploadsSelect<false> | UploadsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -293,11 +295,49 @@ export interface Project {
   linkText?: string | null;
   linkUrl: string;
   /**
-   * Show this project in the featured section
-   */
-  isFeatured?: boolean | null;
-  /**
    * Display order (lower numbers appear first)
+   */
+  order?: number | null;
+  /**
+   * Which timeline checkpoint this project belongs to. Leave empty to hide from timeline.
+   */
+  timelineCheckpoint?: (number | null) | TimelineCheckpoint;
+  /**
+   * Badge shown inside a stacked checkpoint (e.g. "2022 — 2025", "Earlier"). Optional.
+   */
+  timelineBadge?: string | null;
+  /**
+   * Order within the timeline checkpoint (for stack / grid variants).
+   */
+  timelineOrder?: number | null;
+  /**
+   * When this item was published/completed
+   */
+  publishedAt?: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "timeline-checkpoints".
+ */
+export interface TimelineCheckpoint {
+  id: number;
+  /**
+   * Date label shown in the left column (e.g. "2026", "2022 — 2025").
+   */
+  label: string;
+  /**
+   * Name shown below the date (e.g. "Now", "Bird", "Eurail").
+   */
+  sub: string;
+  variant: 'hero' | 'single' | 'stack' | 'grid';
+  /**
+   * Mark this checkpoint as current (pulsing node, emphasised styling).
+   */
+  current?: boolean | null;
+  /**
+   * Display order (lower numbers appear first / top).
    */
   order?: number | null;
   /**
@@ -418,6 +458,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'timeline-checkpoints';
+        value: number | TimelineCheckpoint;
       } | null)
     | ({
         relationTo: 'uploads';
@@ -565,7 +609,23 @@ export interface ProjectsSelect<T extends boolean = true> {
   imageUrl?: T;
   linkText?: T;
   linkUrl?: T;
-  isFeatured?: T;
+  order?: T;
+  timelineCheckpoint?: T;
+  timelineBadge?: T;
+  timelineOrder?: T;
+  publishedAt?: T;
+  createdAt?: T;
+  updatedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "timeline-checkpoints_select".
+ */
+export interface TimelineCheckpointsSelect<T extends boolean = true> {
+  label?: T;
+  sub?: T;
+  variant?: T;
+  current?: T;
   order?: T;
   publishedAt?: T;
   createdAt?: T;

@@ -10,6 +10,7 @@ import { Books } from "./collections/Books";
 import { Media } from "./collections/Media";
 import { Videos } from "./collections/Videos";
 import { Projects } from "./collections/Projects";
+import { TimelineCheckpoints } from "./collections/TimelineCheckpoints";
 import { Uploads } from "./collections/Uploads";
 import { Posts } from "./collections/Posts";
 
@@ -23,7 +24,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Books, Media, Videos, Projects, Uploads, Posts],
+  collections: [Users, Books, Media, Videos, Projects, TimelineCheckpoints, Uploads, Posts],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

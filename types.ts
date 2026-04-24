@@ -1,4 +1,4 @@
-import { getBooks, getMedia, getPosts, getProjects, getVideos } from "./lib/payload";
+import { getBooks, getMedia, getPosts, getVideos } from "./lib/payload";
 
 export interface LinkPreviewData {
   title: string;
@@ -12,8 +12,6 @@ export type BookItem = BookItems[number];
 
 export type MediaItems = Awaited<ReturnType<typeof getMedia>>;
 export type MediaItem = MediaItems[number];
-
-export type ProjectItems = Awaited<ReturnType<typeof getProjects>>;
 
 export type PostItems = Awaited<ReturnType<typeof getPosts>>;
 export type PostItem = PostItems[number];

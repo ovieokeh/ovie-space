@@ -38,8 +38,15 @@ export async function GET(req: NextRequest): Promise<Response> {
         },
       });
 
-      const docs = response.data.docs || [];
-      const results: BookSearchResult[] = docs.map((doc: any) => ({
+      type OpenLibraryDoc = {
+        title: string;
+        author_name?: string[];
+        first_publish_year?: number;
+        isbn?: string[];
+        cover_i?: number;
+      };
+      const docs = (response.data.docs || []) as OpenLibraryDoc[];
+      const results: BookSearchResult[] = docs.map((doc) => ({
         title: doc.title,
         author: doc.author_name ? doc.author_name.join(", ") : "Unknown",
         year: doc.first_publish_year,

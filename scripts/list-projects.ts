@@ -7,7 +7,9 @@ async function main() {
 
   console.log(`Found ${docs.length} project(s):\n`);
   for (const p of docs) {
-    console.log(`— ${p.title} [order=${p.order ?? "—"}, featured=${p.isFeatured}, id=${p.id}]`);
+    const cp = p.timelineCheckpoint;
+    const cpId = cp ? (typeof cp === "object" ? cp.id : cp) : null;
+    console.log(`— ${p.title} [order=${p.order ?? "—"}, checkpoint=${cpId ?? "—"}, id=${p.id}]`);
     console.log(`  linkUrl: ${p.linkUrl}`);
     console.log(`  imageUrl: ${p.imageUrl || "(none)"}`);
     const txt = extractText(p.description);

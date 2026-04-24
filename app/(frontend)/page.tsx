@@ -1,8 +1,8 @@
-import { getProjects } from "@/lib/payload";
+import { getTimeline } from "@/lib/payload";
 import { HomePageClient } from "./HomePageClient";
 
 export default async function HomePage() {
-  const projects = await getProjects();
+  const timeline = await getTimeline();
 
-  return <HomePageClient projects={projects} />;
+  return <HomePageClient timeline={timeline} />;
 }

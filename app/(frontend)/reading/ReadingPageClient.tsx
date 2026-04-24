@@ -44,9 +44,9 @@ export function ReadingPageClient({ books, header, publications }: ReadingPageCl
           fiction, philosophy, and biographies are my go-to genres.
         </p>
         <p className="text-foreground/90 leading-relaxed">
-          This library contains {books.length} books I've encountered—{finishedCount} finished
+          This library contains {books.length} books I&apos;ve encountered—{finishedCount} finished
           {readingCount > 0 && `, ${readingCount} currently reading`}. Each entry includes my personal thoughts and
-          takeaways where I've had a chance to reflect on them.
+          takeaways where I&apos;ve had a chance to reflect on them.
         </p>
       </motion.section>
 

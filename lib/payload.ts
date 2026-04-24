@@ -38,7 +38,7 @@ export async function getBooks() {
     tags: extractTags(book.tags),
     description: book.description || "",
     imageUrl: book.imageUrl ? decodeURIComponent(book.imageUrl) : "",
-    personalReview: (book as any).personalReview || "",
+    personalReview: (book as { personalReview?: string }).personalReview || "",
     updatedAt: book.updatedAt,
     createdAt: book.createdAt,
     publishedAt: book.publishedAt,
@@ -85,42 +85,54 @@ export async function getVideos() {
   }));
 }
 
-export async function getProjects() {
+export type TimelineProject = {
+  title: string;
+  description: string;
+  linkText: string;
+  linkUrl: string;
+  image: string;
+  badge?: string;
+};
+
+export type TimelineCheckpoint = {
+  id: number;
+  label: string;
+  sub: string;
+  variant: "hero" | "single" | "stack" | "grid";
+  current: boolean;
+  projects: TimelineProject[];
+};
+
+export async function getTimeline(): Promise<TimelineCheckpoint[]> {
   const payload = await getPayload({ config });
-  const { docs } = await payload.find({
-    collection: "projects",
-    limit: 100,
-    sort: "order",
-  });
 
-  const featured = docs.find((p) => p.isFeatured);
-  const others = docs.filter((p) => !p.isFeatured);
+  const [{ docs: checkpoints }, { docs: projects }] = await Promise.all([
+    payload.find({ collection: "timeline-checkpoints", limit: 100, sort: "order" }),
+    payload.find({ collection: "projects", limit: 100, sort: "timelineOrder" }),
+  ]);
 
-  return {
-    featured: featured
-      ? {
-          tag: "Featured Project",
-          title: featured.title,
-          description: extractTextFromRichText(featured.description),
-          linkText: featured.linkText || "Learn More",
-          linkUrl: featured.linkUrl,
-          image: featured.imageUrl || "",
-          createdAt: featured.createdAt,
-          updatedAt: featured.updatedAt,
-          publishedAt: featured.publishedAt || null,
-        }
-      : null,
-    others: others.map((project) => ({
-      image: project.imageUrl || "",
-      title: project.title,
-      description: extractTextFromRichText(project.description),
-      linkText: project.linkText || "Learn More",
-      linkUrl: project.linkUrl,
-      createdAt: project.createdAt,
-      updatedAt: project.updatedAt,
-      publishedAt: project.publishedAt || null,
-    })),
-  };
+  return checkpoints.map((cp) => ({
+    id: cp.id,
+    label: cp.label,
+    sub: cp.sub,
+    variant: cp.variant,
+    current: Boolean(cp.current),
+    projects: projects
+      .filter((p) => {
+        const ref = p.timelineCheckpoint;
+        if (!ref) return false;
+        const refId = typeof ref === "object" ? ref.id : ref;
+        return refId === cp.id;
+      })
+      .map((p) => ({
+        title: p.title,
+        description: extractTextFromRichText(p.description),
+        linkText: p.linkText || "Learn More",
+        linkUrl: p.linkUrl,
+        image: p.imageUrl || "",
+        badge: p.timelineBadge || undefined,
+      })),
+  }));
 }
 
 export async function getPosts() {
