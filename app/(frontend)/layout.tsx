@@ -18,9 +18,25 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ovie.dev"),
-  title: { default: "Ovie Okeh — Developer & Designer", template: "%s | Ovie.dev" },
+  title: { default: "Ovie Okeh — Builder & Engineer", template: "%s | Ovie.dev" },
   description:
-    "Ovie Okeh is a full-stack developer and product designer based in the Netherlands, building business applications, travel technology, and community platforms with React, Next.js, and TypeScript.",
+    "Software engineer building products end-to-end across TypeScript, Swift, and Rust. Based in the Netherlands. Available for contract and architect engagements.",
+  keywords: [
+    "software engineer",
+    "full-stack engineer",
+    "TypeScript",
+    "Swift",
+    "Rust",
+    "React",
+    "Next.js",
+    "contract engineer",
+    "Netherlands",
+    "Utrecht",
+    "Ovie Okeh",
+    "builder",
+  ],
+  authors: [{ name: "Ovie Okeh", url: "https://ovie.dev" }],
+  creator: "Ovie Okeh",
   alternates: {
     canonical: "https://ovie.dev",
     types: {
@@ -30,17 +46,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Ovie.dev",
-    title: "Ovie Okeh — Developer & Designer",
+    title: "Ovie Okeh — Builder & Engineer",
     description:
-      "Full-stack developer and product designer based in the Netherlands. Building with React, Next.js, and TypeScript.",
+      "Software engineer shipping products end-to-end across TypeScript, Swift, and Rust. Based in the Netherlands. Available for contract and architect engagements.",
     url: "https://ovie.dev",
     images: [{ url: "/images/ovie-dev-og.png", width: 1200, height: 630, alt: "Ovie.dev" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ovie Okeh — Developer & Designer",
+    title: "Ovie Okeh — Builder & Engineer",
     description:
-      "Full-stack developer and product designer based in the Netherlands. Building with React, Next.js, and TypeScript.",
+      "Software engineer shipping products end-to-end across TypeScript, Swift, and Rust. Based in the Netherlands.",
     images: ["/images/ovie-dev-og.png"],
   },
   robots: {

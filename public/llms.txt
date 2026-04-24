@@ -4,43 +4,52 @@
 - Name: Ovie.dev
 - Owner: Ovie Okeh
 - URL: https://ovie.dev
+- Location: Utrecht, Netherlands
 
 ## About Ovie Okeh
-Ovie Okeh is a full-stack developer and product designer based in the Netherlands. He builds software that solves real problems, with a focus on business applications, travel technology, and community platforms.
+Ovie Okeh is a software engineer based in the Netherlands who builds products end-to-end — from spec through architecture, implementation, release, and on-call. He works across TypeScript, Swift, and Rust, with a focus on shipping polyglot, spec-first systems.
 
-### Professional Background
-- Full-Stack Developer at Bird (2022–2025): Built comprehensive business management applications
-- Frontend Developer at Eurail (2020–2022): Built timetable and trip planner features for millions of European travelers
-- Technical Writer: Published articles on LogRocket and OpenReplay covering React, Node.js, and web development
+Positioning: **Builder & Engineer**. Available for contract engagements, fractional tech-lead roles, and architect consulting — especially for founders shipping early products and teams that need end-to-end ownership across stacks.
 
-### Current Work
-Building Kindling — a platform for guided, community-driven routines designed to foster personal growth through shared practices.
+### Current Work (April 2026)
+- **SoundDojo** — Native Swift app for piano practice. MIDI-first scoring model that measures notes, timing, and touch in real time. Current main build. https://sounddojo.app
+- Running contract engineering work in parallel.
+
+### Active Public Products
+- **BigPerspective** — Market-intelligence tool tracking how critical assets (oil, metals, grain, chips) flow between countries and when those flows come under pressure. https://bigperspective.ovie.dev
+- **Kindling** — Platform for shared, guided routines; experiment in whether community and structure help people stick to goals. https://www.getkindling.app/en
+- **ChatWrapped** — Turn a WhatsApp chat export into shareable stats on reply speed, night-owl energy, and who starts the chaos. https://chatwrapped.ovie.dev
+
+### Career History
+- **Bird** (2022–2025) — Full-stack engineer. Shipped features end-to-end across Bird's all-in-one small-business app: invoicing, CRM, projects, payroll, messaging. Three years.
+- **Eurail** (2020–2022) — Frontend engineer. Built timetable and trip-planner features on eurail.com. First European market role.
+- **Pusher** (earlier) — Front-end engineer on realtime APIs for chat, presence, live data. Published four tutorials. Pusher was acquired by MessageBird, which later rebranded to Bird — where Ovie ended up working years later.
 
 ### Technical Expertise
-- Frontend: React, Next.js, TypeScript, Tailwind CSS
-- Backend: Node.js, PostgreSQL, REST APIs, GraphQL
-- Interests: AI tools, automation, trading bots, creative coding
+- **Languages**: TypeScript, Swift, Rust, JavaScript, Node.js
+- **Frontend**: React, Next.js, SwiftUI, Tailwind CSS, Framer Motion
+- **Backend**: Node.js, PostgreSQL, REST APIs, GraphQL, Payload CMS
+- **AI tooling**: LLM agents, real-time meeting and interview assistants, RAG systems
+- **Practices**: Spec-first development, end-to-end ownership, code review, release management, on-call
+
+### Availability
+Open to contract, fractional, or architect engagements. Strongest fit: founders shipping early products, teams that need polyglot depth (TS + Swift or TS + Rust), and roles where end-to-end ownership matters more than narrow specialisation.
 
 ## Site Structure
 
 ### Main Pages
-- / — Homepage with projects and interests
-- /about — Detailed biography and professional background
-- /blog — Technical articles and thoughts
+- / — Homepage with work timeline (SoundDojo, current products, career history)
+- /about — Professional background and skills
+- /blog — Technical articles and essays
 - /reading — Book collection and reviews
-- /media — Movies and shows watched
-- /hobbies — Creative projects, piano performances, vlogs
-
-### Key Content
-- Blog posts on web development, product design, and technology
-- Book reviews covering sci-fi, philosophy, and biographies
-- Personal reviews of films and shows
-- Piano performance videos and creative projects
+- /media — Films and shows
+- /hobbies — Creative projects and piano performances
 
 ## Contact
 - Email: kevinokeh@gmail.com
 - GitHub: https://github.com/ovieokeh
 - LinkedIn: https://linkedin.com/in/ovieokeh
+- Pusher author page: https://pusher.com/author/ovie-okeh
 
 ## Publications
 - LogRocket Blog: https://blog.logrocket.com/author/ovieokeh/

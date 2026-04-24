@@ -64,7 +64,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-panel border-t border-border overflow-hidden"
+            className="absolute inset-x-0 top-full md:hidden glass-panel border-t border-border overflow-hidden"
           >
             <nav className="flex flex-col items-center gap-6 py-8">
               {globalContent.nav.links.map((link) => {
@@ -75,7 +75,7 @@ export function Header() {
                     href={link.href}
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
-                      "text-sm font-medium px-4 py-2 rounded-md transition-colors",
+                      "text-sm font-bold px-4 py-2 rounded-md transition-colors",
                       isActive
                         ? "text-foreground bg-secondary"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
