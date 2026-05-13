@@ -41,8 +41,8 @@ export function CinefillAttribution() {
         </a>
 
         <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-          An offline-first watch diary. Ratings, reviews, watchlists, and episode standouts that
-          live on your phone first, then sync to the web.
+          An offline-first watch diary. Ratings, reviews, watchlists, and episode standouts live on
+          your phone first; only items marked public flow through to this page.
         </p>
 
         <a

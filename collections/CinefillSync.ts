@@ -38,7 +38,7 @@ export const CinefillDiaryEntries: CollectionConfig = {
   slug: "cinefill-diary-entries",
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "mediaType", "watchedDate", "clientUpdatedAt"],
+    defaultColumns: ["title", "mediaType", "isPublic", "watchedDate", "clientUpdatedAt"],
   },
   access: protectedAccess,
   fields: [
@@ -61,6 +61,7 @@ export const CinefillDiaryEntries: CollectionConfig = {
     { name: "watchedDate", type: "text", required: true, index: true },
     { name: "rating", type: "number", required: true },
     { name: "note", type: "textarea" },
+    { name: "isPublic", type: "checkbox", defaultValue: false, index: true },
     { name: "clientCreatedAt", type: "number", required: true },
   ],
 };
@@ -69,7 +70,7 @@ export const CinefillWatchlistItems: CollectionConfig = {
   slug: "cinefill-watchlist-items",
   admin: {
     useAsTitle: "title",
-    defaultColumns: ["title", "mediaType", "addedAt", "clientUpdatedAt"],
+    defaultColumns: ["title", "mediaType", "isPublic", "addedAt", "clientUpdatedAt"],
   },
   access: protectedAccess,
   fields: [
@@ -87,6 +88,7 @@ export const CinefillWatchlistItems: CollectionConfig = {
     { name: "title", type: "text", required: true },
     { name: "year", type: "text" },
     { name: "posterPath", type: "text" },
+    { name: "isPublic", type: "checkbox", defaultValue: false, index: true },
     { name: "addedAt", type: "number", required: true, index: true },
   ],
 };

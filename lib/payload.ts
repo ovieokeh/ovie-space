@@ -110,13 +110,23 @@ export async function getMedia() {
       collection: "cinefill-diary-entries",
       limit: 1000,
       sort: "-clientUpdatedAt",
-      where: { clientDeletedAt: { equals: null } },
+      where: {
+        and: [
+          { clientDeletedAt: { equals: null } },
+          { isPublic: { equals: true } },
+        ],
+      },
     }),
     payload.find({
       collection: "cinefill-watchlist-items",
       limit: 1000,
       sort: "-addedAt",
-      where: { clientDeletedAt: { equals: null } },
+      where: {
+        and: [
+          { clientDeletedAt: { equals: null } },
+          { isPublic: { equals: true } },
+        ],
+      },
     }),
   ]);
 

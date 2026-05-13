@@ -404,6 +404,7 @@ export interface CinefillDiaryEntry {
   watchedDate: string;
   rating: number;
   note?: string | null;
+  isPublic?: boolean | null;
   clientCreatedAt: number;
   updatedAt: string;
   createdAt: string;
@@ -423,6 +424,7 @@ export interface CinefillWatchlistItem {
   title: string;
   year?: string | null;
   posterPath?: string | null;
+  isPublic?: boolean | null;
   addedAt: number;
   updatedAt: string;
   createdAt: string;
@@ -702,6 +704,7 @@ export interface CinefillDiaryEntriesSelect<T extends boolean = true> {
   watchedDate?: T;
   rating?: T;
   note?: T;
+  isPublic?: T;
   clientCreatedAt?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -720,6 +723,7 @@ export interface CinefillWatchlistItemsSelect<T extends boolean = true> {
   title?: T;
   year?: T;
   posterPath?: T;
+  isPublic?: T;
   addedAt?: T;
   updatedAt?: T;
   createdAt?: T;

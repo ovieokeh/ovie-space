@@ -28,6 +28,7 @@ const diaryRecord = {
   watchedDate: "2026-05-13",
   rating: 4,
   note: "",
+  isPublic: true,
   createdAt: 1,
   updatedAt: 2,
   deletedAt: null,
@@ -47,6 +48,35 @@ describe("cinefill sync contract", () => {
       },
     });
     assert.equal(request?.changes.diaryEntries[0]?.syncId, "diary:1");
+    assert.equal(request?.changes.diaryEntries[0]?.isPublic, true);
+  });
+
+  it("defaults legacy diary and watchlist records to private", () => {
+    const request = normalizeSyncRequest({
+      schemaVersion: 1,
+      deviceId: "device-a",
+      cursor: null,
+      changes: {
+        diaryEntries: [{ ...diaryRecord, isPublic: undefined }],
+        watchlistItems: [
+          {
+            syncId: "watchlist:movie:1",
+            tmdbId: 1,
+            mediaType: "movie",
+            title: "Film",
+            year: "2024",
+            posterPath: null,
+            addedAt: 1,
+            updatedAt: 2,
+            deletedAt: null,
+            lastModifiedDeviceId: "device-a",
+          },
+        ],
+        episodeStandouts: [],
+      },
+    });
+    assert.equal(request?.changes.diaryEntries[0]?.isPublic, false);
+    assert.equal(request?.changes.watchlistItems[0]?.isPublic, false);
   });
 
   it("rejects malformed records", () => {

@@ -28,6 +28,7 @@ export type DiaryEntryRecord = SyncBaseRecord & {
   watchedDate: string;
   rating: number;
   note: string;
+  isPublic: boolean;
   createdAt: number;
 };
 
@@ -37,6 +38,7 @@ export type WatchlistItemRecord = SyncBaseRecord & {
   title: string;
   year: string | null;
   posterPath: string | null;
+  isPublic: boolean;
   addedAt: number;
 };
 
@@ -157,6 +159,7 @@ export function normalizeDiaryEntryRecord(input: unknown): DiaryEntryRecord | nu
   const watchedDate = asString(input.watchedDate);
   const rating = asNumber(input.rating);
   const note = asString(input.note);
+  const isPublic = typeof input.isPublic === "boolean" ? input.isPublic : false;
   const createdAt = asNumber(input.createdAt);
   const mediaType = input.mediaType;
   if (
@@ -187,6 +190,7 @@ export function normalizeDiaryEntryRecord(input: unknown): DiaryEntryRecord | nu
     watchedDate,
     rating,
     note,
+    isPublic,
     createdAt,
   };
 }
@@ -198,6 +202,7 @@ export function normalizeWatchlistItemRecord(input: unknown): WatchlistItemRecor
   const title = asString(input.title);
   const year = asNullableString(input.year);
   const posterPath = asNullableString(input.posterPath);
+  const isPublic = typeof input.isPublic === "boolean" ? input.isPublic : false;
   const addedAt = asNumber(input.addedAt);
   const mediaType = input.mediaType;
   if (
@@ -211,7 +216,7 @@ export function normalizeWatchlistItemRecord(input: unknown): WatchlistItemRecor
   ) {
     return null;
   }
-  return { ...base, tmdbId, mediaType, title, year, posterPath, addedAt };
+  return { ...base, tmdbId, mediaType, title, year, posterPath, isPublic, addedAt };
 }
 
 export function normalizeEpisodeStandoutRecord(

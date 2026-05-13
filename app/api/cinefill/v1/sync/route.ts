@@ -67,6 +67,7 @@ const diarySpec: CollectionSpec<DiaryEntryRecord> = {
     watchedDate: record.watchedDate,
     rating: record.rating,
     note: record.note,
+    isPublic: record.isPublic,
     clientCreatedAt: record.createdAt,
   }),
   fromDoc: (doc) => ({
@@ -81,6 +82,7 @@ const diarySpec: CollectionSpec<DiaryEntryRecord> = {
     watchedDate: String(doc.watchedDate),
     rating: Number(doc.rating),
     note: String(doc.note ?? ""),
+    isPublic: doc.isPublic === true,
     createdAt: Number(doc.clientCreatedAt),
   }),
 };
@@ -95,6 +97,7 @@ const watchlistSpec: CollectionSpec<WatchlistItemRecord> = {
     title: record.title,
     year: record.year,
     posterPath: record.posterPath,
+    isPublic: record.isPublic,
     addedAt: record.addedAt,
   }),
   fromDoc: (doc) => ({
@@ -104,6 +107,7 @@ const watchlistSpec: CollectionSpec<WatchlistItemRecord> = {
     title: String(doc.title),
     year: typeof doc.year === "string" ? doc.year : null,
     posterPath: typeof doc.posterPath === "string" ? doc.posterPath : null,
+    isPublic: doc.isPublic === true,
     addedAt: Number(doc.addedAt),
   }),
 };

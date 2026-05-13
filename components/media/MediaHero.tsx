@@ -31,7 +31,7 @@ export function MediaHero({ watchedCount }: MediaHeroProps) {
       </h1>
 
       <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-        A living log of films and shows that have rewired me — synced from{" "}
+        A curated public shelf of films and shows I chose to share from{" "}
         <a
           href="https://github.com/ovieokeh/cinefill"
           target="_blank"
@@ -40,8 +40,8 @@ export function MediaHero({ watchedCount }: MediaHeroProps) {
         >
           cinefill
         </a>
-        , my offline-first watch diary. Ratings, half-formed notes, watchlist whims — the way they
-        actually land.
+        , my offline-first watch diary. Ratings, half-formed notes, watchlist whims — only when I
+        explicitly make them public.
       </p>
     </motion.header>
   );
