@@ -3,7 +3,6 @@ import config from "../payload.config";
 
 // Import existing content
 import { readingData } from "../content/reading";
-import { mediaData } from "../content/media";
 import { hobbiesData } from "../content/hobbies";
 import { homepageContent } from "../content/homepage";
 
@@ -30,27 +29,6 @@ async function seed() {
       console.log(`  ✓ Created book: ${book.title}`);
     } catch (error) {
       console.error(`  ✗ Failed to create book: ${book.title}`, error);
-    }
-  }
-
-  // Seed Media (Movies/Shows)
-  console.log("🎬 Seeding media...");
-  for (const item of mediaData.library) {
-    try {
-      await payload.create({
-        collection: "media",
-        data: {
-          title: item.title,
-          type: item.type as "Movie" | "Show",
-          status: item.status as "Watched" | "Watching" | "Want to Watch",
-          tags: item.tags.map((tag) => ({ tag })),
-          description: item.description,
-          imageUrl: item.imageUrl,
-        },
-      });
-      console.log(`  ✓ Created media: ${item.title}`);
-    } catch (error) {
-      console.error(`  ✗ Failed to create media: ${item.title}`, error);
     }
   }
 

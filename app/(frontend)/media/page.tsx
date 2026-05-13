@@ -3,13 +3,6 @@ import { getMedia } from "@/lib/payload";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { MediaPageClient } from "./MediaPageClient";
 
-const pageContent = {
-  header: {
-    title: "Media",
-    description: "A log of movies and shows I've enjoyed recently. A reflection of stories that have captivated me.",
-  },
-};
-
 export const metadata: Metadata = {
   title: "Media",
   description:
@@ -36,7 +29,7 @@ export default async function MediaPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <MediaPageClient media={media} header={pageContent.header} />
+      <MediaPageClient media={media} />
     </>
   );
 }

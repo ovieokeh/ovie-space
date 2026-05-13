@@ -12,8 +12,14 @@
   --border: #e6e6e6;
   --muted: #9b9a97;
 
+  /* Cinefill brand tokens — sampled from the hybridmark */
+  --cinefill-amber: #e8b547;
+  --cinefill-amber-soft: #f3cf7e;
+  --cinefill-ink: #1a1a1a;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
 @theme inline {
@@ -22,8 +28,12 @@
   --color-secondary: var(--secondary);
   --color-border: var(--border);
   --color-muted: var(--muted);
+  --color-cinefill-amber: var(--cinefill-amber);
+  --color-cinefill-amber-soft: var(--cinefill-amber-soft);
+  --color-cinefill-ink: var(--cinefill-ink);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
 }
 
 .dark {
@@ -33,6 +43,11 @@
   --secondary: #202020;
   --border: #2f2f2f;
   --muted: #737373;
+
+  /* Slightly brighter amber for dark backgrounds, plus an inverted ink */
+  --cinefill-amber: #f0c25c;
+  --cinefill-amber-soft: #8a6a23;
+  --cinefill-ink: #0d0d0d;
 }
 
 body {
@@ -51,4 +66,29 @@ body {
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--foreground) 6%, transparent),
     0 1px 2px color-mix(in srgb, var(--foreground) 4%, transparent);
+}
+
+/* Warm-tinted SVG noise overlay. Pinned to the page, low opacity. */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.91 0 0 0 0 0.71 0 0 0 0 0.28 0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 220px 220px;
+}
+.dark .grain::after {
+  opacity: 0.08;
+  mix-blend-mode: screen;
+}
+
+/* Utility class to apply the display font without configuring Tailwind. */
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
 }

@@ -69,12 +69,14 @@ export interface Config {
   collections: {
     users: User;
     books: Book;
-    media: Media;
     videos: Video;
     projects: Project;
     'timeline-checkpoints': TimelineCheckpoint;
     uploads: Upload;
     posts: Post;
+    'cinefill-diary-entries': CinefillDiaryEntry;
+    'cinefill-watchlist-items': CinefillWatchlistItem;
+    'cinefill-episode-standouts': CinefillEpisodeStandout;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,12 +86,14 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     books: BooksSelect<false> | BooksSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
     videos: VideosSelect<false> | VideosSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'timeline-checkpoints': TimelineCheckpointsSelect<false> | TimelineCheckpointsSelect<true>;
     uploads: UploadsSelect<false> | UploadsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    'cinefill-diary-entries': CinefillDiaryEntriesSelect<false> | CinefillDiaryEntriesSelect<true>;
+    'cinefill-watchlist-items': CinefillWatchlistItemsSelect<false> | CinefillWatchlistItemsSelect<true>;
+    'cinefill-episode-standouts': CinefillEpisodeStandoutsSelect<false> | CinefillEpisodeStandoutsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -173,41 +177,6 @@ export interface Book {
   imageUrl?: string | null;
   /**
    * Your personal thoughts and review of the book
-   */
-  personalReview?: string | null;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * When this item was published/completed
-   */
-  publishedAt?: string | null;
-  createdAt: string;
-  updatedAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  /**
-   * Search for a movie or TV show to autopopulate details
-   */
-  tmdbLookup?: string | null;
-  title: string;
-  type: 'Movie' | 'Show';
-  status: 'Watched' | 'Watching' | 'Want to Watch';
-  description?: string | null;
-  /**
-   * URL to the movie/show poster
-   */
-  imageUrl?: string | null;
-  /**
-   * Your personal thoughts and review of the movie/show
    */
   personalReview?: string | null;
   tags?:
@@ -417,6 +386,69 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cinefill-diary-entries".
+ */
+export interface CinefillDiaryEntry {
+  id: number;
+  syncId: string;
+  clientUpdatedAt: number;
+  clientDeletedAt?: number | null;
+  lastModifiedDeviceId: string;
+  tmdbId: number;
+  mediaType: 'movie' | 'tv_season';
+  seasonNumber?: number | null;
+  seasonName?: string | null;
+  title: string;
+  year?: string | null;
+  posterPath?: string | null;
+  watchedDate: string;
+  rating: number;
+  note?: string | null;
+  clientCreatedAt: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cinefill-watchlist-items".
+ */
+export interface CinefillWatchlistItem {
+  id: number;
+  syncId: string;
+  clientUpdatedAt: number;
+  clientDeletedAt?: number | null;
+  lastModifiedDeviceId: string;
+  tmdbId: number;
+  mediaType: 'movie' | 'tv';
+  title: string;
+  year?: string | null;
+  posterPath?: string | null;
+  addedAt: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cinefill-episode-standouts".
+ */
+export interface CinefillEpisodeStandout {
+  id: number;
+  syncId: string;
+  clientUpdatedAt: number;
+  clientDeletedAt?: number | null;
+  lastModifiedDeviceId: string;
+  tmdbId: number;
+  seasonNumber: number;
+  episodeNumber: number;
+  episodeName: string;
+  showTitle: string;
+  posterPath?: string | null;
+  markedAt: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -448,10 +480,6 @@ export interface PayloadLockedDocument {
         value: number | Book;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
-      } | null)
-    | ({
         relationTo: 'videos';
         value: number | Video;
       } | null)
@@ -470,6 +498,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'cinefill-diary-entries';
+        value: number | CinefillDiaryEntry;
+      } | null)
+    | ({
+        relationTo: 'cinefill-watchlist-items';
+        value: number | CinefillWatchlistItem;
+      } | null)
+    | ({
+        relationTo: 'cinefill-episode-standouts';
+        value: number | CinefillEpisodeStandout;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -544,28 +584,6 @@ export interface BooksSelect<T extends boolean = true> {
   isbn?: T;
   title?: T;
   author?: T;
-  status?: T;
-  description?: T;
-  imageUrl?: T;
-  personalReview?: T;
-  tags?:
-    | T
-    | {
-        tag?: T;
-        id?: T;
-      };
-  publishedAt?: T;
-  createdAt?: T;
-  updatedAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
- */
-export interface MediaSelect<T extends boolean = true> {
-  tmdbLookup?: T;
-  title?: T;
-  type?: T;
   status?: T;
   description?: T;
   imageUrl?: T;
@@ -664,6 +682,66 @@ export interface PostsSelect<T extends boolean = true> {
   lastUpdatedAt?: T;
   createdAt?: T;
   updatedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cinefill-diary-entries_select".
+ */
+export interface CinefillDiaryEntriesSelect<T extends boolean = true> {
+  syncId?: T;
+  clientUpdatedAt?: T;
+  clientDeletedAt?: T;
+  lastModifiedDeviceId?: T;
+  tmdbId?: T;
+  mediaType?: T;
+  seasonNumber?: T;
+  seasonName?: T;
+  title?: T;
+  year?: T;
+  posterPath?: T;
+  watchedDate?: T;
+  rating?: T;
+  note?: T;
+  clientCreatedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cinefill-watchlist-items_select".
+ */
+export interface CinefillWatchlistItemsSelect<T extends boolean = true> {
+  syncId?: T;
+  clientUpdatedAt?: T;
+  clientDeletedAt?: T;
+  lastModifiedDeviceId?: T;
+  tmdbId?: T;
+  mediaType?: T;
+  title?: T;
+  year?: T;
+  posterPath?: T;
+  addedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cinefill-episode-standouts_select".
+ */
+export interface CinefillEpisodeStandoutsSelect<T extends boolean = true> {
+  syncId?: T;
+  clientUpdatedAt?: T;
+  clientDeletedAt?: T;
+  lastModifiedDeviceId?: T;
+  tmdbId?: T;
+  seasonNumber?: T;
+  episodeNumber?: T;
+  episodeName?: T;
+  showTitle?: T;
+  posterPath?: T;
+  markedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

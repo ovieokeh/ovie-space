@@ -9,12 +9,13 @@
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
+    "test:sync": "tsx --test lib/cinefill-sync.test.ts",
     "seed": "node --env-file=.env.local --import tsx scripts/seed.ts",
     "prepare": "husky"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix --max-warnings=0"
+      "eslint --fix --max-warnings=0 --no-warn-ignored"
     ]
   },
   "dependencies": {
