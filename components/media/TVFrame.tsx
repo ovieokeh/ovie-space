@@ -29,7 +29,7 @@ export function TVFrame({ children, className = "", label }: TVFrameProps) {
       {/* Cabinet — main screen area + amber side panel as one flex unit */}
       <div className="flex overflow-hidden rounded-[28px] border-2 border-cinefill-ink/90 bg-cinefill-ink shadow-[0_24px_60px_-30px_rgba(26,26,26,0.6)] dark:border-cinefill-ink/40 dark:shadow-[0_24px_60px_-30px_rgba(0,0,0,0.8)]">
         {/* Screen area */}
-        <div className="relative flex-1 bg-cinefill-ink p-5 sm:p-7">
+        <div className="relative flex-1 bg-cinefill-ink p-5 pt-7 sm:p-7">
           {label ? (
             <span className="absolute left-5 top-3 z-10 text-[10px] font-semibold uppercase tracking-[0.22em] text-cinefill-amber/80">
               {label}

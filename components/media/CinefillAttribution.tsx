@@ -46,13 +46,13 @@ export function CinefillAttribution() {
         </p>
 
         <a
-          href="https://github.com/ovieokeh/cinefill"
+          href="https://cinefill.ovie.dev"
           target="_blank"
           rel="noreferrer"
           className="group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-foreground transition"
         >
           <span className="border-b border-cinefill-amber/0 pb-0.5 transition group-hover:border-cinefill-amber">
-            View on GitHub
+            cinefill.ovie.dev
           </span>
           <ArrowUpRight
             size={13}
