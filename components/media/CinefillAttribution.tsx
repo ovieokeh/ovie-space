@@ -45,6 +45,20 @@ export function CinefillAttribution() {
           your phone first; only items marked public flow through to this page.
         </p>
 
+        <div className="mt-2 flex max-w-xl flex-col items-center gap-3 text-xs leading-relaxed text-muted-foreground/75">
+          <Image
+            src="/images/tmdb-blue-short.svg"
+            alt="The Movie Database (TMDB)"
+            width={137}
+            height={18}
+            className="h-4 w-auto"
+          />
+          <p>
+            This page uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise
+            approved by TMDB.
+          </p>
+        </div>
+
         <a
           href="https://cinefill.ovie.dev"
           target="_blank"
