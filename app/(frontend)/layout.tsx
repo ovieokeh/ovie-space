@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 import { Header } from "@/components/core/Header";
 import { Footer } from "@/components/core/Footer";
 import { Providers } from "@/components/Providers";
@@ -85,6 +86,15 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify([webSiteJsonLd(), personJsonLd()]) }}
+        />
+        <OpenPanelComponent
+          apiUrl="https://analytics.ovie.dev"
+          clientId="4a54e272-26ee-4b17-952f-9bc42dd157c3"
+          // Self-hosted copy of the tracker (public/op1.js); openpanel.dev's
+          // CDN intermittently 503s. Re-download when bumping @openpanel/nextjs.
+          cdnUrl="/op1.js"
+          trackScreenViews
+          trackOutgoingLinks
         />
         <Providers>
           <Header />

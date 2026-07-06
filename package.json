@@ -10,6 +10,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "typecheck": "tsc --noEmit",
     "test:sync": "tsx --test lib/cinefill-sync.test.ts",
+    "test:studio": "tsx --test lib/lexical-markdown.test.ts lib/studio-events.test.ts lib/coolify.test.ts lib/slug.test.ts",
+    "migrate:posts-markdown": "node --env-file=.env.local --import tsx scripts/migrate-posts-to-markdown.ts",
     "seed": "node --env-file=.env.local --import tsx scripts/seed.ts",
     "prepare": "husky"
   },
@@ -19,6 +21,9 @@
     ]
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.19",
+    "@mdxeditor/editor": "^4.0.0",
+    "@openpanel/nextjs": "^1.5.1",
     "@payloadcms/db-postgres": "^3.70.0",
     "@payloadcms/next": "^3.70.0",
     "@payloadcms/richtext-lexical": "^3.70.0",
@@ -38,6 +43,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.4.0"
   },
